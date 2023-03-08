@@ -6,24 +6,30 @@ public class PlayerController : MonoBehaviour
 {
     #region BackingFields
 
+    [Header("Sensibility")]
     [SerializeField]
     private float _sentibilityVertical = 1;
 
     [SerializeField]
     private float _sensibilityHorizontal = 1;
 
+    [Header("Speeds")]
     [SerializeField]
     private float _hoverSpeed = 1;
+
+    [SerializeField]
+    private float _slideSpeed = 1;
+    
+    [SerializeField]
+    private float _upAndDownSpeed = 1;
 
     [SerializeField]
     private float _maxSpeed;
 
     [SerializeField]
-    private float _rotationSmoothness;
+    private int _rotation = 50;
 
-    [SerializeField]
-    private int _rotation;
-
+    [Header("Cameras")]
     [SerializeField]
     private Camera _firstPersonCamera;
 
@@ -33,8 +39,11 @@ public class PlayerController : MonoBehaviour
 
     #region Fields
 
-    private float _horizontalRotation;
-    private float _verticalRotation;
+    private float _horizontalRotation, _verticalRotation;
+
+    private bool _camera1 = true;
+    private bool _camera2 = false;
+
 
     public bool LockedCursor
     {
@@ -42,44 +51,47 @@ public class PlayerController : MonoBehaviour
         private set;
     } = true;
 
+
     #endregion
 
     #region Body
 
     private void Update()
     {
+        ChangeCamera();
         LockCursor();
-        DirectionHandler();
-        Acceleration();
-        Rotation(_rotation);
-        //StartCoroutine(Bobbing());
+        RotationHandler();
+        Move();
+
     }
     #endregion
     /// <summary>
     /// player direction follows view and sensibility option <br/>
     /// <see cref="_sensibilityHorizontal"/> <seealso cref="_sentibilityVertical"/> multiplies normal sensibility
     /// </summary>
-    private void DirectionHandler()
+    private void RotationHandler()
     {
         float mouseHorizontal = Input.GetAxis("Mouse X") * _sensibilityHorizontal;
         float mouseVertical = Input.GetAxis("Mouse Y") * _sentibilityVertical;
 
-
         _verticalRotation += mouseHorizontal;
         _horizontalRotation -= mouseVertical;
 
-        transform.eulerAngles = new Vector3(_horizontalRotation, _verticalRotation, transform.rotation.z);
+        float rotationInput = Input.GetAxisRaw("Rotate");
+
+
+        Vector3 rotation = new Vector3(_horizontalRotation, _verticalRotation, transform.rotation.z);
+        transform.eulerAngles = rotation;
+        transform.Rotate(Vector3.forward, rotationInput * _rotation * Time.deltaTime);
     }
 
-    /// <summary>
-    /// while holding <seealso cref="Horizontal"/> (w or a ) <see cref="_hoverSpeed"/> increases till <seealso cref="_maxSpeed"/>
-    /// </summary>
-    private void Acceleration()
+    private void Move()
     {
-        float moveVertical = Input.GetAxis("Vertical");
-        Vector3 move = transform.forward * moveVertical;
-        float currentSpeed = Mathf.Clamp(move.magnitude * _hoverSpeed, 0f, _maxSpeed);
-        transform.position += move.normalized * currentSpeed * Time.deltaTime;
+        float moveY = Input.GetAxisRaw("Vertical") * _hoverSpeed * Time.deltaTime;
+        float moveX = Input.GetAxisRaw("Horizontal") * _slideSpeed * Time.deltaTime;
+        float moveZ = Input.GetAxisRaw("Fly") * _upAndDownSpeed * Time.deltaTime;
+
+        transform.position += transform.forward * moveY + transform.right * moveX + transform.up * moveZ;
 
     }
 
@@ -108,34 +120,35 @@ public class PlayerController : MonoBehaviour
         transform.position += new Vector3(0, 0.5f, 0);
 
     }
-    /// <summary>
-    /// e and q to 
-    /// </summary>
-    private void Rotation(int value)
-    {
-        bool rotateE;
-        bool rotateQ;
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            rotateE = true;
-        }
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            rotateQ = true;
-        }
-        rotateE = false;
-        rotateQ = false;
-        print(rotateQ);
-        print(rotateE);
-    }
     private void ChangeCamera()
     {
-        bool _camera1;
-        bool _camera2;
-        
-        if (Input.GetKeyDown(KeyCode.R))
-        {
 
+        if (_camera1)
+        {
+            _firstPersonCamera.gameObject.SetActive(true);
+        }
+        else
+        {
+            _firstPersonCamera.gameObject.SetActive(false);
+        }
+        if (_camera2)
+        {
+            _rearCamera.gameObject.SetActive(true);
+        }
+        else
+        {
+            _rearCamera.gameObject.SetActive(false);
+        }
+
+        if (Input.GetKeyDown(KeyCode.R) && _camera1)
+        {
+            _camera1 = false;
+            _camera2 = true;
+        }
+        else if (Input.GetKeyDown(KeyCode.R) && _camera2)
+        {
+            _camera1 = true;
+            _camera2 = false;
         }
     }
 }
