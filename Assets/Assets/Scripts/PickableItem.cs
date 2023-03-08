@@ -8,8 +8,8 @@ public class PickableItem : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Laser laser;
-            other.gameObject.GetComponent<ShootingManager>()._PrimaryList.Add(new Laser(transform, transform));
+            //Laser laser;
+            //other.gameObject.GetComponent<ShootingManager>()._PrimaryList.Add(new Laser(transform, transform));
         }
     }
 }

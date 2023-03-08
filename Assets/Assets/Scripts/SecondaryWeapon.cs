@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SecondaryWeapon
+public class SecondaryWeapon: MonoBehaviour
 {
-    public float AmmoCost;
+
 }

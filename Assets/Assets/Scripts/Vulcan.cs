@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Vulcan : PrimaryWeapon
 {
-    public Transform SpawnPoint;
+    private Transform SpawnPoint;
 
     public Vulcan(Transform point)
     {
