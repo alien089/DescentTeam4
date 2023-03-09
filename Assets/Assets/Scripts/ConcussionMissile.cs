@@ -29,14 +29,16 @@ public class ConcussionMissile : SecondaryWeapon
     {
         bool shooted = false;
 
-        if (AmmoCount - AmmoCost > 0)
+        if (AmmoCount - AmmoCost >= 0)
         {
             GameObject tmp;
-            tmp = Instantiate(ConcussionProjectile, SpawnPoints[_ActualShot].position, Quaternion.identity);
+            tmp = Instantiate(ConcussionProjectile, SpawnPoints[_ActualShot].position, SpawnPoints[_ActualShot].rotation);
 
             int temp = _ActualShot;
             _ActualShot = _NextShot;
             _NextShot = temp;
+
+            AmmoCount -= AmmoCost;
         }
 
         return shooted;

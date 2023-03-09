@@ -6,11 +6,11 @@ public class BaseProjectile : MonoBehaviour
 {
     public int Damage;
     public float Speed;
-    private CapsuleCollider collider;
+    //private Rigidbody rb;
 
     private void Start()
     {
-        collider = transform.GetComponent<CapsuleCollider>();
+        //rb = transform.GetComponent<Rigidbody>();
     }
 
     private void Update()
@@ -20,7 +20,8 @@ public class BaseProjectile : MonoBehaviour
 
     private void Move()
     {
-        transform.Translate(transform.forward * Speed * Time.deltaTime);
+        transform.Translate(transform.forward * Speed * Time.deltaTime, Space.World);
+        //rb.velocity = transform.forward * Speed;
     }
 
     private void OnCollisionEnter(Collision collision)

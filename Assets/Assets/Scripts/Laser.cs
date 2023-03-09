@@ -5,14 +5,15 @@ using UnityEngine;
 
 public class Laser : PrimaryWeapon
 {
-    public int AmmoCount;
+    public float AmmoCount;
     private float AmmoCost;
 
     private Transform[] SpawnPoints = new Transform[2];
     private GameObject _EnergyProjectile;
     private float _Deelay;
 
-    public Laser(Transform left, Transform right, int ammoCount, float ammoCost, GameObject energyProjectile, float deelay)
+    private TimerComponent _Timer;
+    public Laser(Transform left, Transform right, float ammoCount, float ammoCost, GameObject energyProjectile, float deelay, TimerComponent timer)
     {
         SpawnPoints[0] = left;
         SpawnPoints[1] = right;
@@ -20,25 +21,25 @@ public class Laser : PrimaryWeapon
         AmmoCount = ammoCount;
         _EnergyProjectile = energyProjectile;
         _Deelay = deelay;
+        _Timer = timer;
     }
 
-    public bool Shoot()
+    public void Shoot()
     {
-        bool shooted = false;
-
-        if (AmmoCount - AmmoCost > 0)
+        if (AmmoCount - AmmoCost >= 0f)
         {
-            if (IsCreating == false)
+            if (_Timer.CanShoot == true)
             {
                 GameObject left;
                 GameObject right;
 
-                left = Instantiate(_EnergyProjectile, SpawnPoints[0].position, SpawnPoints[0].rotation);
-                right = Instantiate(_EnergyProjectile, SpawnPoints[1].position, SpawnPoints[1].rotation);
-                StartCoroutine(WaitAfterCreate(_Deelay));
+                left = UnityEngine.Object.Instantiate(_EnergyProjectile, SpawnPoints[0].position, SpawnPoints[0].rotation);
+                right = UnityEngine.Object.Instantiate(_EnergyProjectile, SpawnPoints[1].position, SpawnPoints[1].rotation);
+
+                _Timer.Coroutine(_Deelay);
+
+                AmmoCount -= AmmoCost;
             }
         }
-
-        return shooted;
     }
 }

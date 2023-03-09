@@ -13,26 +13,26 @@ public class ShootingManager : MonoBehaviour
     public int ActualSecondary;
 
     [Header("Laser")]
-    public GameObject EnergyProjectile;
-    public int EnergyAmmoCount;
-    public float EnergyAmmoCost;
+    public GameObject LaserProjectile;
+    public float LaserAmmoSetupCount;
+    public float LaserAmmoCost;
     public float LaserDeelay;
 
     [Header("Vulcan")]
     public GameObject VulcanProjectile;
-    public int VulcanAmmoCount;
+    public int VulcanAmmoSetupCount;
     public int VulcanAmmoCost;
     public float VulcanDeelay;
 
     [Header("Concussion")]
     public GameObject ConcussionProjectile;
-    public int ConcussionAmmoCount;
+    public int ConcussionAmmoSetupCount;
     public int ConcussionAmmoCost;
     public float ConcussionDeelay;
 
     [Header("Homing")]
     public GameObject HomingProjectile;
-    public int HomingAmmoCount;
+    public int HomingAmmoSetupCount;
     public int HomingAmmoCost;
     public float HomingDeelay;
 
@@ -40,12 +40,18 @@ public class ShootingManager : MonoBehaviour
     public List<SecondaryWeapon> _SecondaryList = new List<SecondaryWeapon>();
 
     private WeaponType _PrimaryType;
+    private Type _PrimaryClass;
     private WeaponType _SecondaryType;
+    private Type _SecondaryClass;
+
+    private TimerComponent _Timer;
     // Start is called before the first frame update
     void Start()
     {
-        _PrimaryList.Add(new Laser(LeftWeapon, RightWeapon, EnergyAmmoCount, EnergyAmmoCost, EnergyProjectile, LaserDeelay));
-        _SecondaryList.Add(new ConcussionMissile(LeftWeapon, RightWeapon, ConcussionAmmoCount, ConcussionAmmoCost, ConcussionProjectile, ConcussionDeelay));
+        _Timer = GetComponent<TimerComponent>();
+
+        _PrimaryList.Add(new Laser(LeftWeapon, RightWeapon, LaserAmmoSetupCount, LaserAmmoCost, LaserProjectile, LaserDeelay, _Timer));
+        _SecondaryList.Add(new ConcussionMissile(LeftWeapon, RightWeapon, ConcussionAmmoSetupCount, ConcussionAmmoCost, ConcussionProjectile, ConcussionDeelay));
 
         _PrimaryType = WeaponType.Laser;
         _SecondaryType = WeaponType.ConcussionMissile;
@@ -77,7 +83,7 @@ public class ShootingManager : MonoBehaviour
             }
         }
     }
-    
+
     private void ShootSecondary()
     {
         if (Input.GetKeyDown(KeyCode.Mouse1))
@@ -99,16 +105,28 @@ public class ShootingManager : MonoBehaviour
     private void ChoosingPrimary()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
             _PrimaryType = WeaponType.Laser;
+            _PrimaryClass = typeof(Laser);
+        }
         if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
             _PrimaryType = WeaponType.Vulcan;
+            _PrimaryClass = typeof(Vulcan);
+        }
     }
 
     private void ChoosingSecondary()
     {
         if (Input.GetKeyDown(KeyCode.Alpha6))
+        {
             _SecondaryType = WeaponType.ConcussionMissile;
+            _SecondaryClass = typeof(ConcussionMissile);
+        }
         if (Input.GetKeyDown(KeyCode.Alpha7))
+        {
             _SecondaryType = WeaponType.HomingMissile;
+            _SecondaryClass = typeof(HomingMissile);
+        }
     }
 }
