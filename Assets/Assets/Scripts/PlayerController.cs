@@ -1,4 +1,4 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,84 +15,114 @@ public class PlayerController : MonoBehaviour
 
     [Header("Speeds")]
     [SerializeField]
-    private float _hoverSpeed = 1;
+    private float _forwardSpeed = 1;
 
     [SerializeField]
     private float _slideSpeed = 1;
-    
+
     [SerializeField]
     private float _upAndDownSpeed = 1;
 
     [SerializeField]
-    private float _maxSpeed;
-
-    [SerializeField]
     private int _rotation = 50;
 
-    [Header("Cameras")]
-    [SerializeField]
-    private Camera _firstPersonCamera;
 
-    [SerializeField]
-    private Camera _rearCamera;
     #endregion
 
     #region Fields
 
+    private bool _isMoving, _canMove;
     private float _horizontalRotation, _verticalRotation;
+    private Rigidbody _rigidBody;
 
-    private bool _camera1 = true;
-    private bool _camera2 = false;
+    private ChangeCamera Camera;
 
-
-    public bool LockedCursor
-    {
-        get;
-        private set;
-    } = true;
-
+    public float MoveUpwards { get => Input.GetAxisRaw("Fly") * _upAndDownSpeed; private set => MoveUpwards = value; }
+    public float MoveSideWays { get => Input.GetAxisRaw("Horizontal") * _slideSpeed; private set => MoveSideWays = value; }
+    public float MoveForward { get => Input.GetAxisRaw("Vertical") * _forwardSpeed; private set => MoveSideWays = value; }
+    public bool LockedCursor { get; private set; } = true;
+    public bool IsMoving { get => _isMoving; private set => _isMoving = value; }
 
     #endregion
 
     #region Body
 
+    /// <summary>
+    /// If adding Camera do <see cref="_cameraValue.add(Camera camere, CameraMode.newCameraMode);"/>
+    /// </summary>
+    private void Awake()
+    {
+        TryGetComponent<Rigidbody>(out _rigidBody);
+        TryGetComponent<ChangeCamera>(out Camera);
+    }
+    private void FixedUpdate()
+    {
+        MovementHandler();
+    }
+
     private void Update()
     {
-        ChangeCamera();
         LockCursor();
         RotationHandler();
-        Move();
-
     }
     #endregion
+
     /// <summary>
     /// player direction follows view and sensibility option <br/>
-    /// <see cref="_sensibilityHorizontal"/> <seealso cref="_sentibilityVertical"/> multiplies normal sensibility
+    /// <see cref="_sensibilityHorizontal"/> <seealso cref="_sentibilityVertical"/> multiplies normal sensibility <br/>
+    /// working on rotation
     /// </summary>
     private void RotationHandler()
     {
         float mouseHorizontal = Input.GetAxis("Mouse X") * _sensibilityHorizontal;
         float mouseVertical = Input.GetAxis("Mouse Y") * _sentibilityVertical;
+        float rotationInput = Input.GetAxisRaw("Rotate") * _rotation;
 
         _verticalRotation += mouseHorizontal;
         _horizontalRotation -= mouseVertical;
+        _rotation = Mathf.Clamp(_rotation, -90, 90);
 
-        float rotationInput = Input.GetAxisRaw("Rotate");
-
-
-        Vector3 rotation = new Vector3(_horizontalRotation, _verticalRotation, transform.rotation.z);
-        transform.eulerAngles = rotation;
-        transform.Rotate(Vector3.forward, rotationInput * _rotation * Time.deltaTime);
+        if (rotationInput != 0)
+        {
+            transform.Rotate((rotationInput * Time.deltaTime * Vector3.forward), Space.Self);
+        }
+        else
+        {
+            transform.rotation = Quaternion.Euler(_horizontalRotation, _verticalRotation, transform.rotation.z);
+        }
     }
+    // add.Torque , if rotate not 0 rotate , if rotate is 0 go to nearest angle.
 
-    private void Move()
+    /// <summary>
+    /// if it can <see cref="_canMove"/> = true <see cref="_isMoving = true"/> <br/>
+    /// Adds force in the desired direction by doing <see cref=" _rigidBody.AddForce(_rigidBody.mass * (desiredAxis * desiredDirection));"/>
+    /// </summary>
+    private void MovementHandler()
     {
-        float moveY = Input.GetAxisRaw("Vertical") * _hoverSpeed * Time.deltaTime;
-        float moveX = Input.GetAxisRaw("Horizontal") * _slideSpeed * Time.deltaTime;
-        float moveZ = Input.GetAxisRaw("Fly") * _upAndDownSpeed * Time.deltaTime;
+        _canMove = Camera.CanMove;
+        if (_canMove)
+        {
+            if (MoveUpwards != 0)
+            {
+                _rigidBody.AddForce(_rigidBody.mass * (MoveUpwards * transform.up));
+                _isMoving = true;
+            }
+            if (MoveSideWays != 0)
+            {
+                _rigidBody.AddForce(_rigidBody.mass * (MoveSideWays * transform.right));
+                _isMoving = true;
+            }
+            if (MoveForward != 0)
+            {
+                _rigidBody.AddForce(_rigidBody.mass * (MoveForward * transform.forward));
+                _isMoving = true;
+            }
+            else
+            {
+                _isMoving = false;
+            }
 
-        transform.position += transform.forward * moveY + transform.right * moveX + transform.up * moveZ;
-
+        }
     }
 
     /// <summary>
@@ -106,49 +136,6 @@ public class PlayerController : MonoBehaviour
         {
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
-        }
-    }
-
-    private void BobbingHandler()
-    {
-
-    }
-
-    IEnumerator Bobbing()
-    {
-        yield return new WaitForSeconds(0.5f);
-        transform.position += new Vector3(0, 0.5f, 0);
-
-    }
-    private void ChangeCamera()
-    {
-
-        if (_camera1)
-        {
-            _firstPersonCamera.gameObject.SetActive(true);
-        }
-        else
-        {
-            _firstPersonCamera.gameObject.SetActive(false);
-        }
-        if (_camera2)
-        {
-            _rearCamera.gameObject.SetActive(true);
-        }
-        else
-        {
-            _rearCamera.gameObject.SetActive(false);
-        }
-
-        if (Input.GetKeyDown(KeyCode.R) && _camera1)
-        {
-            _camera1 = false;
-            _camera2 = true;
-        }
-        else if (Input.GetKeyDown(KeyCode.R) && _camera2)
-        {
-            _camera1 = true;
-            _camera2 = false;
         }
     }
 }
