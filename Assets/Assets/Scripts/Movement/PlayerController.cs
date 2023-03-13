@@ -101,7 +101,6 @@ public class PlayerController : MonoBehaviour
         float _newHorizontalRotation = Mathf.Clamp(_horizontalRotation, -89, 89);
 
         targetRotation = Quaternion.Euler(_newHorizontalRotation, _verticalRotation, transform.localEulerAngles.z);
-        //Quaternion targetRotation = Quaternion.Euler(_newHorizontalRotation, _verticalRotation, transform.localEulerAngles.z);
         transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, 1 * Time.deltaTime * _smoothness);
 
         if (rotationInput != 0)
@@ -116,30 +115,6 @@ public class PlayerController : MonoBehaviour
         }
 
     }
-
-    /// <summary>
-    /// if <see cref="Input.GetAxis('Mouse X')"/> is > or < 0 and <see cref="_rotateAngle = false"/> do <see cref="AddAngle(float)"/> and <see cref="_rotateAngle = true"/> <br/>
-    /// else <see cref="_rotateAngle = false"/> therefore it can rotate again
-    /// </summary>
-    /// <param name="value"></param>
-    //private void CheckMouseXAndAddAngle(float value)
-    //{
-    //    float xmouse = Input.GetAxis("Mouse X");
-    //    switch (xmouse)
-    //    {
-    //        case float horizontal when horizontal > 0 && !_rotateAngle:
-    //            StartCoroutine(AddAngle(value));
-    //            _rotateAngle = true;
-    //            break;
-    //        case float horizontal when horizontal < 0 && !_rotateAngle:
-    //            StartCoroutine(AddAngle(-value));
-    //            _rotateAngle = true;
-    //            break;
-    //        case float horizontal when horizontal == 0 && _rotateAngle:
-    //            _rotateAngle = false;
-    //            break;
-    //    }
-    //}
 
     /// <summary>
     /// if it can <see cref="_canMove"/> = true <see cref="_isMoving = true"/> <br/>
@@ -181,10 +156,4 @@ public class PlayerController : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
         }
     }
-
-    //private IEnumerator AddAngle(float value)
-    //{
-    //    yield return new WaitForEndOfFrame();
-    //    transform.eulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y, transform.localEulerAngles.z + value);
-    //}
 }

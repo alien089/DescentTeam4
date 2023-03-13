@@ -28,7 +28,6 @@ public class CameraManager : MonoBehaviour
     public bool CanMove { get; private set; }
 
     private float _ref;
-    private bool _rotateAngle;
     private ECameraMode _cameraMode;
     private readonly Dictionary<Camera, ECameraMode> _cameraValue = new Dictionary<Camera, ECameraMode>();
     public ECameraMode CameraMode
@@ -55,10 +54,6 @@ public class CameraManager : MonoBehaviour
         CameraMode = ECameraMode.FirstPerson;
     }
 
-    private void FixedUpdate()
-    {
-
-    }
     /// <summary>
     /// If adding Camera do <see cref="_cameraValue.add(Camera camere, ECameraMode.newCameraMode);"/>
     /// </summary>
@@ -67,59 +62,16 @@ public class CameraManager : MonoBehaviour
         float xmouse = Input.GetAxis("Mouse X");
         Camera.current.transform.rotation = Quaternion.Euler(new Vector3(transform.eulerAngles.x, transform.eulerAngles.y,
             Mathf.SmoothDampAngle(Camera.current.transform.eulerAngles.z, transform.eulerAngles.z + xmouse * 20, ref _ref, _timeToReach)));
+        
         if (Input.GetKeyDown(KeyCode.R))
         {
             CameraMode = System.Enum.IsDefined(typeof(ECameraMode), CameraMode + 1) ? ++CameraMode : 0;
         }
-        //CheckMouseXAndAddAngle(_angleWhenMoving);
-        switch (CameraMode)
-        {
-            case ECameraMode.RearView:
-                CanMove = false;
-                break;
-            case ECameraMode.FirstPerson:
-                CanMove = true;
-                break;
-            default:
-                CanMove = true;
-                break;
-        }
+
+        BlockMovement();
     }
 
 
-    /// <summary>
-    /// if 
-    /// </summary>
-    /// <param name="value"></param>
-    private void CheckMouseXAndAddAngle(float value) //using in update
-    {
-        float xmouse = Input.GetAxis("Mouse X");
-        switch (xmouse)
-        {
-            case float horizontal when horizontal > 0 && !_rotateAngle:
-                StartCoroutine(AddAngle(-value));
-                _rotateAngle = true;
-                break;
-            case float horizontal when horizontal < 0 && !_rotateAngle:
-                StartCoroutine(AddAngle(value));
-                _rotateAngle = true;
-                break;
-            case float horizontal when horizontal == 0 && _rotateAngle:
-                //Camera.current.transform.eulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y, transform.localEulerAngles.z);
-                //float newRotationZ = Mathf.SmoothDamp(transform.localEulerAngles.z, transform.localEulerAngles.z + value, ref _ref, 3f);
-                //Camera.current.transform.eulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y ,newRotationZ);
-
-                //float current = transform.eulerAngles.z;
-                //float smoothangle = Mathf.LerpAngle(current, transform.eulerAngles.z, Time.deltaTime * _smoothness);
-                //Camera.current.transform.eulerAngles = new Vector3(transform.eulerAngles.z, transform.eulerAngles.y, smoothangle);
-
-                Camera.current.transform.rotation = Quaternion.Euler(new Vector3(transform.eulerAngles.x, transform.eulerAngles.y,
-                    Mathf.SmoothDampAngle(Camera.current.transform.eulerAngles.z, transform.eulerAngles.z + xmouse * 20, ref _ref, _timeToReach)));
-
-                _rotateAngle = false;
-                break;
-        }
-    }
 
     #endregion 
 
@@ -141,16 +93,23 @@ public class CameraManager : MonoBehaviour
             kvp.Key.gameObject.SetActive(true);
         }
     }
-    private IEnumerator AddAngle(float value)
+    /// <summary>
+    /// when <see cref="ECameraMode.RearView"/> bool false <br/>
+    /// default bool = true;
+    /// </summary>
+    private void BlockMovement()
     {
-        yield return new WaitForEndOfFrame();
-        //float smoothedValue = Mathf.Lerp(0, value, 1f);
-        //float targetZ = Mathf.Lerp(transform.localEulerAngles.z, transform.localEulerAngles.z + smoothedValue, 3f);
-
-        float xmouse = Input.GetAxis("Mouse X");
-        //Camera.current.transform.eulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y, targetZ);
-        Camera.current.transform.rotation = Quaternion.Euler(new Vector3(transform.eulerAngles.x, transform.eulerAngles.y,
-        Mathf.SmoothDampAngle(Camera.current.transform.eulerAngles.z, transform.eulerAngles.z + xmouse * 20, ref _ref, _timeToReach)));
-
+        switch (CameraMode)
+        {
+            case ECameraMode.RearView:
+                CanMove = false;
+                break;
+            case ECameraMode.FirstPerson:
+                CanMove = true;
+                break;
+            default:
+                CanMove = true;
+                break;
+        }
     }
 }
