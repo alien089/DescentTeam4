@@ -1,6 +1,6 @@
 using System;
 
-public enum CameraMode : byte
+public enum ECameraMode : byte
 {
     FirstPerson,
     RearView,

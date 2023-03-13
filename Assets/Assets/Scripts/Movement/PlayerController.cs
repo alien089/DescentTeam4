@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -23,19 +24,30 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float _upAndDownSpeed = 1;
 
+    [Header("zRotation Speeds")]
     [SerializeField]
     private int _rotation = 50;
+
+    [SerializeField]
+    private float _goToClosestAngleSpeed;
+
+    [Header("Rotation When mouse X")]
+    [SerializeField]
+    private byte _angleToSum;
 
 
     #endregion
 
     #region Fields
 
+    private float _smoothness = 2000;
     private bool _isMoving, _canMove;
     private float _horizontalRotation, _verticalRotation;
     private Rigidbody _rigidBody;
+    private bool _rotateAngle = false;
+    private Quaternion targetRotation;
 
-    private ChangeCamera Camera;
+    private CameraManager Camera;
 
     public float MoveUpwards { get => Input.GetAxisRaw("Fly") * _upAndDownSpeed; private set => MoveUpwards = value; }
     public float MoveSideWays { get => Input.GetAxisRaw("Horizontal") * _slideSpeed; private set => MoveSideWays = value; }
@@ -48,12 +60,17 @@ public class PlayerController : MonoBehaviour
     #region Body
 
     /// <summary>
-    /// If adding Camera do <see cref="_cameraValue.add(Camera camere, CameraMode.newCameraMode);"/>
+    /// If adding Camera do <see cref="_cameraValue.add(Camera camere, ECameraMode.newCameraMode);"/>
     /// </summary>
     private void Awake()
     {
         TryGetComponent<Rigidbody>(out _rigidBody);
-        TryGetComponent<ChangeCamera>(out Camera);
+        TryGetComponent<CameraManager>(out Camera);
+    }
+
+    private void Start()
+    {
+        _rigidBody.freezeRotation = true;
     }
     private void FixedUpdate()
     {
@@ -70,7 +87,7 @@ public class PlayerController : MonoBehaviour
     /// <summary>
     /// player direction follows view and sensibility option <br/>
     /// <see cref="_sensibilityHorizontal"/> <seealso cref="_sentibilityVertical"/> multiplies normal sensibility <br/>
-    /// working on rotation
+    /// new rotation works kinda like this if the angle is 46 it rounds and divide by 90 and result is 1 than multiplies by 90 and thats the new rotaion it will have
     /// </summary>
     private void RotationHandler()
     {
@@ -80,18 +97,49 @@ public class PlayerController : MonoBehaviour
 
         _verticalRotation += mouseHorizontal;
         _horizontalRotation -= mouseVertical;
-        _rotation = Mathf.Clamp(_rotation, -90, 90);
+
+        float _newHorizontalRotation = Mathf.Clamp(_horizontalRotation, -89, 89);
+
+        targetRotation = Quaternion.Euler(_newHorizontalRotation, _verticalRotation, transform.localEulerAngles.z);
+        //Quaternion targetRotation = Quaternion.Euler(_newHorizontalRotation, _verticalRotation, transform.localEulerAngles.z);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, 1 * Time.deltaTime * _smoothness);
 
         if (rotationInput != 0)
         {
-            transform.Rotate((rotationInput * Time.deltaTime * Vector3.forward), Space.Self);
+            transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z + (rotationInput * Time.deltaTime));
         }
-        else
+        else if (rotationInput == 0 && !_rotateAngle)
         {
-            transform.rotation = Quaternion.Euler(_horizontalRotation, _verticalRotation, transform.rotation.z);
+            float newRotation = Mathf.Round(transform.localEulerAngles.z / 90) * 90;
+            float zRotation = Mathf.MoveTowards(transform.localEulerAngles.z, newRotation, _goToClosestAngleSpeed * Time.deltaTime);
+            transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y, zRotation);
         }
+
     }
-    // add.Torque , if rotate not 0 rotate , if rotate is 0 go to nearest angle.
+
+    /// <summary>
+    /// if <see cref="Input.GetAxis('Mouse X')"/> is > or < 0 and <see cref="_rotateAngle = false"/> do <see cref="AddAngle(float)"/> and <see cref="_rotateAngle = true"/> <br/>
+    /// else <see cref="_rotateAngle = false"/> therefore it can rotate again
+    /// </summary>
+    /// <param name="value"></param>
+    //private void CheckMouseXAndAddAngle(float value)
+    //{
+    //    float xmouse = Input.GetAxis("Mouse X");
+    //    switch (xmouse)
+    //    {
+    //        case float horizontal when horizontal > 0 && !_rotateAngle:
+    //            StartCoroutine(AddAngle(value));
+    //            _rotateAngle = true;
+    //            break;
+    //        case float horizontal when horizontal < 0 && !_rotateAngle:
+    //            StartCoroutine(AddAngle(-value));
+    //            _rotateAngle = true;
+    //            break;
+    //        case float horizontal when horizontal == 0 && _rotateAngle:
+    //            _rotateAngle = false;
+    //            break;
+    //    }
+    //}
 
     /// <summary>
     /// if it can <see cref="_canMove"/> = true <see cref="_isMoving = true"/> <br/>
@@ -102,25 +150,20 @@ public class PlayerController : MonoBehaviour
         _canMove = Camera.CanMove;
         if (_canMove)
         {
+            if (MoveForward + MoveSideWays + MoveForward != 0)
+                _isMoving = true;
+            
             if (MoveUpwards != 0)
-            {
                 _rigidBody.AddForce(_rigidBody.mass * (MoveUpwards * transform.up));
-                _isMoving = true;
-            }
+
             if (MoveSideWays != 0)
-            {
                 _rigidBody.AddForce(_rigidBody.mass * (MoveSideWays * transform.right));
-                _isMoving = true;
-            }
+           
             if (MoveForward != 0)
-            {
                 _rigidBody.AddForce(_rigidBody.mass * (MoveForward * transform.forward));
-                _isMoving = true;
-            }
+            
             else
-            {
                 _isMoving = false;
-            }
 
         }
     }
@@ -138,4 +181,10 @@ public class PlayerController : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
         }
     }
+
+    //private IEnumerator AddAngle(float value)
+    //{
+    //    yield return new WaitForEndOfFrame();
+    //    transform.eulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y, transform.localEulerAngles.z + value);
+    //}
 }
