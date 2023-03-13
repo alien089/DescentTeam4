@@ -36,27 +36,25 @@ public class ShootingManager : MonoBehaviour
     public int HomingAmmoCost;
     public float HomingDeelay;
 
-    public List<PrimaryWeapon> _PrimaryList = new List<PrimaryWeapon>();
-    public List<SecondaryWeapon> _SecondaryList = new List<SecondaryWeapon>();
+    [Header("Input")]
+    public KeyCode PrimaryWeapon = KeyCode.Mouse0;
+    public KeyCode SecondaryWeapon = KeyCode.Mouse1;
+    public KeyCode ChooseFirstPrimary = KeyCode.Alpha1;
+    public KeyCode ChooseSecondPrimary = KeyCode.Alpha2;
+    public KeyCode ChooseFirstSecondary = KeyCode.Alpha6;
+    public KeyCode ChooseSecondSecondary = KeyCode.Alpha7;
 
-    private WeaponType _PrimaryType;
-    private Type _PrimaryClass;
-    private WeaponType _SecondaryType;
-    private Type _SecondaryClass;
+    private List<PrimaryWeapon> m_PrimaryList = new List<PrimaryWeapon>();
+    private List<SecondaryWeapon> m_SecondaryList = new List<SecondaryWeapon>();
 
-    private TimerComponent _Timer;
+    private TimerComponent m_Timer = new TimerComponent();
     // Start is called before the first frame update
     void Start()
     {
-        _Timer = GetComponent<TimerComponent>();
+        m_PrimaryList.Add(new Laser(LeftWeapon, RightWeapon, LaserAmmoSetupCount, LaserAmmoCost, LaserProjectile, LaserDeelay, m_Timer));
+        m_PrimaryList.Add(new Vulcan(CentralWeapon, VulcanAmmoSetupCount, VulcanAmmoCost, VulcanProjectile, VulcanDeelay, m_Timer));
 
-        _PrimaryList.Add(new Laser(LeftWeapon, RightWeapon, LaserAmmoSetupCount, LaserAmmoCost, LaserProjectile, LaserDeelay, _Timer));
-        _PrimaryList.Add(new Vulcan(CentralWeapon, VulcanAmmoSetupCount, VulcanAmmoCost, VulcanProjectile, VulcanDeelay, _Timer));
-
-        _SecondaryList.Add(new ConcussionMissile(LeftWeapon, RightWeapon, ConcussionAmmoSetupCount, ConcussionAmmoCost, ConcussionProjectile, ConcussionDeelay));
-
-        _PrimaryType = WeaponType.Laser;
-        _SecondaryType = WeaponType.ConcussionMissile;
+        m_SecondaryList.Add(new ConcussionMissile(LeftWeapon, RightWeapon, ConcussionAmmoSetupCount, ConcussionAmmoCost, ConcussionProjectile, ConcussionDeelay));
     }
 
     // Update is called once per frame
@@ -70,68 +68,42 @@ public class ShootingManager : MonoBehaviour
 
     private void ShootPrimary()
     {
-        if (Input.GetKey(KeyCode.Mouse0))
+        if (Input.GetKey(PrimaryWeapon))
         {
-            switch (_PrimaryType)
-            {
-                case WeaponType.Laser:
-                    var weaponLaser = _PrimaryList[ActualPrimary] as Laser;
-                    weaponLaser.Shoot();
-                    break;
-                case WeaponType.Vulcan:
-                    var weaponVulcan = _PrimaryList[ActualPrimary] as Vulcan;
-                    weaponVulcan.Shoot();
-                    break;
-            }
+            PrimaryWeapon weapon = m_PrimaryList[ActualPrimary];
+            weapon.Shoot();
         }
     }
 
     private void ShootSecondary()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse1))
+        if (Input.GetKeyDown(SecondaryWeapon))
         {
-            switch (_SecondaryType)
-            {
-                case WeaponType.ConcussionMissile:
-                    var weaponConcussionMissile = _SecondaryList[ActualSecondary] as ConcussionMissile;
-                    weaponConcussionMissile.Shoot();
-                    break;
-                case WeaponType.HomingMissile:
-                    var weaponHomingMissilen = _SecondaryList[ActualSecondary] as HomingMissile;
-                    weaponHomingMissilen.Shoot();
-                    break;
-            }
+            SecondaryWeapon weapon = m_SecondaryList[ActualSecondary];
+            weapon.Shoot();
         }
     }
 
     private void ChoosingPrimary()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (Input.GetKeyDown(ChooseFirstPrimary))
         {
-            _PrimaryType = WeaponType.Laser;
-            _PrimaryClass = typeof(Laser);
             ActualPrimary = 0;
         }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
+        if (Input.GetKeyDown(ChooseSecondPrimary))
         {
-            _PrimaryType = WeaponType.Vulcan;
-            _PrimaryClass = typeof(Vulcan);
             ActualPrimary = 1;
         }
     }
 
     private void ChoosingSecondary()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha6))
+        if (Input.GetKeyDown(ChooseFirstSecondary))
         {
-            _SecondaryType = WeaponType.ConcussionMissile;
-            _SecondaryClass = typeof(ConcussionMissile);
             ActualSecondary = 0;
         }
-        if (Input.GetKeyDown(KeyCode.Alpha7))
+        if (Input.GetKeyDown(ChooseSecondSecondary))
         {
-            _SecondaryType = WeaponType.HomingMissile;
-            _SecondaryClass = typeof(HomingMissile);
             ActualSecondary = 1;
         }
     }

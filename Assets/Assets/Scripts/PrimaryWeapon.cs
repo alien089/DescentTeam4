@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PrimaryWeapon
+public abstract class PrimaryWeapon
 {
-    
+    public abstract bool Shoot();
 }

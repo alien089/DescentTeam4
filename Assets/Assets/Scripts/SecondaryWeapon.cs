@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SecondaryWeapon: MonoBehaviour
+public abstract class SecondaryWeapon
 {
-
+    public abstract bool Shoot();
 }

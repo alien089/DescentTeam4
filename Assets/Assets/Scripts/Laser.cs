@@ -6,40 +6,45 @@ using UnityEngine;
 public class Laser : PrimaryWeapon
 {
     public float AmmoCount;
-    private float AmmoCost;
+    private float m_AmmoCost;
 
-    private Transform[] SpawnPoints = new Transform[2];
-    private GameObject _EnergyProjectile;
-    private float _Deelay;
+    private Transform[] m_SpawnPoints = new Transform[2];
+    private GameObject m_LaserProjectile;
+    private float m_Deelay;
 
-    private TimerComponent _Timer;
+    private TimerComponent m_Timer;
     public Laser(Transform left, Transform right, float ammoCount, float ammoCost, GameObject energyProjectile, float deelay, TimerComponent timer)
     {
-        SpawnPoints[0] = left;
-        SpawnPoints[1] = right;
-        AmmoCost = ammoCost;
+        m_SpawnPoints[0] = left;
+        m_SpawnPoints[1] = right;
+        m_AmmoCost = ammoCost;
         AmmoCount = ammoCount;
-        _EnergyProjectile = energyProjectile;
-        _Deelay = deelay;
-        _Timer = timer;
+        m_LaserProjectile = energyProjectile;
+        m_Deelay = deelay;
+        m_Timer = timer;
     }
 
-    public void Shoot()
+    public override bool Shoot()
     {
-        if (AmmoCount - AmmoCost >= 0f)
+        bool shooted = false;
+        if (AmmoCount - m_AmmoCost >= 0f)
         {
-            if (_Timer.CanShoot == true)
+            if (m_Timer.CanShoot == true)
             {
                 GameObject left;
                 GameObject right;
 
-                left = UnityEngine.Object.Instantiate(_EnergyProjectile, SpawnPoints[0].position, SpawnPoints[0].rotation);
-                right = UnityEngine.Object.Instantiate(_EnergyProjectile, SpawnPoints[1].position, SpawnPoints[1].rotation);
+                left = UnityEngine.Object.Instantiate(m_LaserProjectile, m_SpawnPoints[0].position, m_SpawnPoints[0].rotation);
+                right = UnityEngine.Object.Instantiate(m_LaserProjectile, m_SpawnPoints[1].position, m_SpawnPoints[1].rotation);
 
-                _Timer.Coroutine(_Deelay);
+                m_Timer.Coroutine(m_Deelay);
 
-                AmmoCount -= AmmoCost;
+                AmmoCount -= m_AmmoCost;
+
+                shooted = true;
             }
         }
+
+        return shooted;
     }
 }

@@ -124,7 +124,6 @@ GameObject:
   - component: {fileID: 2248884193691502549}
   - component: {fileID: 2248884193691502548}
   - component: {fileID: 1540677181981023187}
-  - component: {fileID: 1582337582}
   m_Layer: 0
   m_Name: playerShooting
   m_TagString: Untagged
@@ -185,7 +184,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RightWeapon: {fileID: 5451814832002354277}
   LeftWeapon: {fileID: 8131951834325780578}
-  CentralWeapon: {fileID: 0}
+  CentralWeapon: {fileID: 6662187245680771769}
   ActualPrimary: 0
   ActualSecondary: 0
   LaserProjectile: {fileID: 5117200529552386246, guid: d32a0c237f8034546b27e481e1e29c32, type: 3}
@@ -204,20 +203,12 @@ MonoBehaviour:
   HomingAmmoSetupCount: 0
   HomingAmmoCost: 0
   HomingDeelay: 0
-  _SecondaryList: []
---- !u!114 &1582337582
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2248884193691502547}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c0e2b571f2d2f34cbeb79d999617e1b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CanShoot: 1
+  PrimaryWeapon: 323
+  SecondaryWeapon: 324
+  ChooseFirstPrimary: 49
+  ChooseSecondPrimary: 50
+  ChooseFirstSecondary: 54
+  ChooseSecondSecondary: 55
 --- !u!1 &3068990057175482311
 GameObject:
   m_ObjectHideFlags: 0
