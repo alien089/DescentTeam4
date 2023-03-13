@@ -1,35 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1266599220575708453
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5542645532373912191}
-  m_Layer: 0
-  m_Name: SpawnCentral
-  m_TagString: Untagged
-  m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5542645532373912191
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1266599220575708453}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2248884193691502549}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1491504121166823810
 GameObject:
   m_ObjectHideFlags: 0
@@ -154,6 +124,7 @@ GameObject:
   - component: {fileID: 2248884193691502549}
   - component: {fileID: 2248884193691502548}
   - component: {fileID: 1540677181981023187}
+  - component: {fileID: 1582337582}
   m_Layer: 0
   m_Name: playerShooting
   m_TagString: Untagged
@@ -175,7 +146,7 @@ Transform:
   - {fileID: 2248884193030189454}
   - {fileID: 8131951834325780578}
   - {fileID: 5451814832002354277}
-  - {fileID: 5542645532373912191}
+  - {fileID: 6662187245680771769}
   - {fileID: 4864168202620891799}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -217,24 +188,36 @@ MonoBehaviour:
   CentralWeapon: {fileID: 0}
   ActualPrimary: 0
   ActualSecondary: 0
-  EnergyProjectile: {fileID: 0}
-  EnergyAmmoCount: 0
-  EnergyAmmoCost: 0
-  LaserDeelay: 0
-  VulcanProjectile: {fileID: 0}
-  VulcanAmmoCount: 0
-  VulcanAmmoCost: 0
-  VulcanDeelay: 0
-  ConcussionProjectile: {fileID: 0}
-  ConcussionAmmoCount: 0
-  ConcussionAmmoCost: 0
+  LaserProjectile: {fileID: 5117200529552386246, guid: d32a0c237f8034546b27e481e1e29c32, type: 3}
+  LaserAmmoSetupCount: 100
+  LaserAmmoCost: 0.2
+  LaserDeelay: 0.5
+  VulcanProjectile: {fileID: 5117200529552386246, guid: 3852fe1836f0fb8438b050c842a26081, type: 3}
+  VulcanAmmoSetupCount: 2500
+  VulcanAmmoCost: 1
+  VulcanDeelay: 0.1
+  ConcussionProjectile: {fileID: 5117200529552386246, guid: 92df6beaf028d4a41a2499eec25322db, type: 3}
+  ConcussionAmmoSetupCount: 6
+  ConcussionAmmoCost: 1
   ConcussionDeelay: 0
   HomingProjectile: {fileID: 0}
-  HomingAmmoCount: 0
+  HomingAmmoSetupCount: 0
   HomingAmmoCost: 0
   HomingDeelay: 0
-  _PrimaryList: []
   _SecondaryList: []
+--- !u!114 &1582337582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2248884193691502547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c0e2b571f2d2f34cbeb79d999617e1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CanShoot: 1
 --- !u!1 &3068990057175482311
 GameObject:
   m_ObjectHideFlags: 0
@@ -249,7 +232,7 @@ GameObject:
   - component: {fileID: 5498197535972046052}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -359,4 +342,34 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2248884193691502549}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8449039808624240835
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6662187245680771769}
+  m_Layer: 0
+  m_Name: SpawnCentral
+  m_TagString: Untagged
+  m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6662187245680771769
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8449039808624240835}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.16, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2248884193691502549}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

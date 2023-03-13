@@ -51,6 +51,8 @@ public class ShootingManager : MonoBehaviour
         _Timer = GetComponent<TimerComponent>();
 
         _PrimaryList.Add(new Laser(LeftWeapon, RightWeapon, LaserAmmoSetupCount, LaserAmmoCost, LaserProjectile, LaserDeelay, _Timer));
+        _PrimaryList.Add(new Vulcan(CentralWeapon, VulcanAmmoSetupCount, VulcanAmmoCost, VulcanProjectile, VulcanDeelay, _Timer));
+
         _SecondaryList.Add(new ConcussionMissile(LeftWeapon, RightWeapon, ConcussionAmmoSetupCount, ConcussionAmmoCost, ConcussionProjectile, ConcussionDeelay));
 
         _PrimaryType = WeaponType.Laser;
@@ -108,11 +110,13 @@ public class ShootingManager : MonoBehaviour
         {
             _PrimaryType = WeaponType.Laser;
             _PrimaryClass = typeof(Laser);
+            ActualPrimary = 0;
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             _PrimaryType = WeaponType.Vulcan;
             _PrimaryClass = typeof(Vulcan);
+            ActualPrimary = 1;
         }
     }
 
@@ -122,11 +126,13 @@ public class ShootingManager : MonoBehaviour
         {
             _SecondaryType = WeaponType.ConcussionMissile;
             _SecondaryClass = typeof(ConcussionMissile);
+            ActualSecondary = 0;
         }
         if (Input.GetKeyDown(KeyCode.Alpha7))
         {
             _SecondaryType = WeaponType.HomingMissile;
             _SecondaryClass = typeof(HomingMissile);
+            ActualSecondary = 1;
         }
     }
 }

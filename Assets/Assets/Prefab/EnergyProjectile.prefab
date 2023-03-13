@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: -6356952947653434985}
   m_Layer: 0
   m_Name: EnergyProjectile
-  m_TagString: Untagged
+  m_TagString: baseProjectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -141,7 +141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f67832157b5002746ba1364267b964b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 0
+  Damage: 1
   Speed: 3
 --- !u!54 &-6356952947653434985
 Rigidbody:

@@ -4,14 +4,38 @@ using UnityEngine;
 
 public class Vulcan : PrimaryWeapon
 {
-    private Transform SpawnPoint;
+    public float AmmoCount;
+    private float AmmoCost;
 
-    public Vulcan(Transform point)
+    private Transform SpawnPoints;
+    private GameObject _VulcanProjectile;
+    private float _Deelay;
+
+    private TimerComponent _Timer;
+    public Vulcan(Transform spawn, float ammoCount, float ammoCost, GameObject vulcanProjectile, float deelay, TimerComponent timer)
     {
-        SpawnPoint = point;
+        SpawnPoints = spawn;
+        AmmoCost = ammoCost;
+        AmmoCount = ammoCount;
+        _VulcanProjectile = vulcanProjectile;
+        _Deelay = deelay;
+        _Timer = timer;
     }
+
     public void Shoot()
     {
+        if (AmmoCount - AmmoCost >= 0f)
+        {
+            if (_Timer.CanShoot == true)
+            {
+                GameObject bullet;
 
+                bullet = UnityEngine.Object.Instantiate(_VulcanProjectile, SpawnPoints.position, SpawnPoints.rotation);
+
+                _Timer.Coroutine(_Deelay);
+
+                AmmoCount -= AmmoCost;
+            }
+        }
     }
 }
