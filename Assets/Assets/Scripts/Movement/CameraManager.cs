@@ -59,16 +59,16 @@ public class CameraManager : MonoBehaviour
     /// </summary>
     private void Update()
     {
-        float xmouse = Input.GetAxis("Mouse X");
-        Camera.current.transform.rotation = Quaternion.Euler(new Vector3(transform.eulerAngles.x, transform.eulerAngles.y,
-            Mathf.SmoothDampAngle(Camera.current.transform.eulerAngles.z, transform.eulerAngles.z + xmouse * 20, ref _ref, _timeToReach)));
-        
         if (Input.GetKeyDown(KeyCode.R))
         {
             CameraMode = System.Enum.IsDefined(typeof(ECameraMode), CameraMode + 1) ? ++CameraMode : 0;
         }
 
         BlockMovement();
+
+        float xmouse = Input.GetAxis("Mouse X");
+        Camera.current.transform.rotation = Quaternion.Euler(new Vector3(transform.eulerAngles.x, transform.eulerAngles.y,
+            Mathf.SmoothDampAngle(Camera.current.transform.eulerAngles.z, transform.eulerAngles.z + xmouse * 20, ref _ref, _timeToReach)));
     }
 
 

@@ -113,7 +113,6 @@ public class PlayerController : MonoBehaviour
             float zRotation = Mathf.MoveTowards(transform.localEulerAngles.z, newRotation, _goToClosestAngleSpeed * Time.deltaTime);
             transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y, zRotation);
         }
-
     }
 
     /// <summary>
