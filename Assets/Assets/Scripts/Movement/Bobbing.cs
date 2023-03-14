@@ -6,55 +6,55 @@ public class Bobbing : MonoBehaviour
 {
     #region BackingFields
     [SerializeField]
-    private float _bobbingSpeed;
+    private float m_bobbingSpeed;
 
     [SerializeField]
-    private float _bobbingPower;
+    private float m_bobbingPower;
 
     [SerializeField]
-    private bool _CasePlayer;
+    private bool m_CasePlayer;
 
     [SerializeField]
-    private bool _CaseAI;
+    private bool m_CaseAI;
 
     #endregion
 
     #region Field
 
-    private Vector3 _startingPosition;
+    private Vector3 m_startingPosition;
     private PlayerController Player;
-    private bool _isMoving;
-    private Rigidbody _rigidBody;
+    private bool m_isMoving;
+    private Rigidbody m_rigidBody;
 
     #endregion
 
     private void Start()
     {
         TryGetComponent<PlayerController>(out Player);
-        TryGetComponent<Rigidbody>(out _rigidBody);
+        TryGetComponent<Rigidbody>(out m_rigidBody);
 
-        _isMoving = Player.IsMoving;
-        _startingPosition = transform.position;
+        m_isMoving = Player.IsMoving;
+        m_startingPosition = transform.position;
     }
 
     private void FixedUpdate()
     {
-        _isMoving = Player.IsMoving;
-        float bobbing = Mathf.Sin(Time.time * _bobbingSpeed) * _bobbingPower;
+        m_isMoving = Player.IsMoving;
+        float bobbing = Mathf.Sin(Time.time * m_bobbingSpeed) * m_bobbingPower;
         
         Vector3 playerPos = transform.position;
         Vector3 bobbingForce = new Vector3(0f, bobbing, 0f);
-        if (_CasePlayer)
+        if (m_CasePlayer)
         {
-            if (_isMoving == false)
+            if (m_isMoving == false)
             {
 
-                _rigidBody.AddForce(bobbingForce, ForceMode.Force);
+                m_rigidBody.AddForce(bobbingForce, ForceMode.Force);
             }
         }
-        if (_CaseAI)
+        if (m_CaseAI)
         {
-            _rigidBody.AddForce(bobbingForce, ForceMode.Force);
+            m_rigidBody.AddForce(bobbingForce, ForceMode.Force);
         }
     }
 }

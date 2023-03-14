@@ -10,16 +10,16 @@ public class CameraManager : MonoBehaviour
 
     [Header("Cameras")]
     [SerializeField]
-    private Camera _firstPersonCamera;
+    private Camera m_firstPersonCamera;
 
     [SerializeField]
-    private Camera _rearCamera;
+    private Camera m_rearCamera;
 
     [SerializeField]
-    private float _angleWhenMoving;
+    private float m_angleWhenMoving;
 
     [SerializeField]
-    private float _timeToReach;
+    private float m_timeToReach;
 
     #endregion
 
@@ -27,17 +27,17 @@ public class CameraManager : MonoBehaviour
 
     public bool CanMove { get; private set; }
 
-    private Camera _currentCamerea;
-    private float _ref;
-    private ECameraMode _cameraMode;
-    private readonly Dictionary<Camera, ECameraMode> _cameraValue = new Dictionary<Camera, ECameraMode>();
+    private Camera m_currentCamerea;
+    private float m_ref;
+    private ECameraMode m_cameraMode;
+    private readonly Dictionary<Camera, ECameraMode> m_cameraValue = new Dictionary<Camera, ECameraMode>();
     public ECameraMode CameraMode
     {
-        get => _cameraMode;
+        get => m_cameraMode;
         private set
         {
-            ECameraMode oldCamera = _cameraMode;
-            _cameraMode = value;
+            ECameraMode oldCamera = m_cameraMode;
+            m_cameraMode = value;
             OnChangingCameraMode(oldCamera);
         }
     }
@@ -50,8 +50,8 @@ public class CameraManager : MonoBehaviour
     /// </summary>
     private void Awake()
     {
-        _cameraValue.Add(_firstPersonCamera, ECameraMode.FirstPerson);
-        _cameraValue.Add(_rearCamera, ECameraMode.RearView);
+        m_cameraValue.Add(m_firstPersonCamera, ECameraMode.FirstPerson);
+        m_cameraValue.Add(m_rearCamera, ECameraMode.RearView);
         CameraMode = ECameraMode.FirstPerson;
     }
 
@@ -67,11 +67,11 @@ public class CameraManager : MonoBehaviour
 
         BlockMovement();
 
-        if (_currentCamerea != _rearCamera)
+        if (m_currentCamerea != m_rearCamera)
         {
             float xmouse = Input.GetAxis("Mouse X");
-            _currentCamerea.transform.rotation = Quaternion.Euler(new Vector3(transform.eulerAngles.x, transform.eulerAngles.y,
-               Mathf.SmoothDampAngle(_currentCamerea.transform.eulerAngles.z, transform.eulerAngles.z + xmouse * 20, ref _ref, _timeToReach)));
+            m_currentCamerea.transform.rotation = Quaternion.Euler(new Vector3(transform.eulerAngles.x, transform.eulerAngles.y,
+               Mathf.SmoothDampAngle(m_currentCamerea.transform.eulerAngles.z, transform.eulerAngles.z + xmouse * 20, ref m_ref, m_timeToReach)));
         }
     }
 
@@ -81,13 +81,13 @@ public class CameraManager : MonoBehaviour
 
     #region Methods
     /// <summary>
-    /// For each <see cref="_cameraValue"/> check if <see cref="CameraMode"/> is the current value <br/>
+    /// For each <see cref="m_cameraValue"/> check if <see cref="CameraMode"/> is the current value <br/>
     /// if its not <see cref="GameObject.SetActive(false)"/>
     /// </summary>
     /// <param name="oldCamera"></param>
     private void OnChangingCameraMode(ECameraMode oldCamera) //using in CameraMode
     {
-        foreach (KeyValuePair<Camera, ECameraMode> kvp in _cameraValue)
+        foreach (KeyValuePair<Camera, ECameraMode> kvp in m_cameraValue)
         {
             if (CameraMode != kvp.Value)
             {
@@ -96,7 +96,7 @@ public class CameraManager : MonoBehaviour
             }
 
             kvp.Key.gameObject.SetActive(true);
-            _currentCamerea = kvp.Key;
+            m_currentCamerea = kvp.Key;
         }
     }
     /// <summary>

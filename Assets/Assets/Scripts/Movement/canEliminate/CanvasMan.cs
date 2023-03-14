@@ -7,12 +7,11 @@ using UnityEngine.UI;
 public class CanvasMan : MonoBehaviour
 {
     [SerializeField]
-    private Text _angleText;
+    private Text m_angleText;
 
     private void Update()
     {
         float lockedAngle = (float)Math.Round(transform.localEulerAngles.z);
-        _angleText.text = "Angle z: " + lockedAngle.ToString();
-
+        m_angleText.text = "Angle z: " + lockedAngle.ToString();
     }
 }
