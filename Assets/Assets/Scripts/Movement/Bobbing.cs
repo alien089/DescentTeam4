@@ -49,7 +49,7 @@ public class Bobbing : MonoBehaviour
             if (_isMoving == false)
             {
 
-                _rigidBody.AddForce(bobbingForce, ForceMode.Force); print("is Bobbing");
+                _rigidBody.AddForce(bobbingForce, ForceMode.Force);
             }
         }
         if (_CaseAI)

@@ -1387,6 +1387,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4285087594590284730, guid: 2ac841b42c718ec4b923439224341697, type: 3}
+      propertyPath: _lowestAngle
+      value: 175
+      objectReference: {fileID: 0}
+    - target: {fileID: 4285087594590284730, guid: 2ac841b42c718ec4b923439224341697, type: 3}
+      propertyPath: _highestAngle
+      value: 195
+      objectReference: {fileID: 0}
     - target: {fileID: 4285087594590284731, guid: 2ac841b42c718ec4b923439224341697, type: 3}
       propertyPath: m_RootOrder
       value: 1

@@ -27,6 +27,7 @@ public class CameraManager : MonoBehaviour
 
     public bool CanMove { get; private set; }
 
+    private Camera _currentCamerea;
     private float _ref;
     private ECameraMode _cameraMode;
     private readonly Dictionary<Camera, ECameraMode> _cameraValue = new Dictionary<Camera, ECameraMode>();
@@ -66,15 +67,19 @@ public class CameraManager : MonoBehaviour
 
         BlockMovement();
 
-        float xmouse = Input.GetAxis("Mouse X");
-        Camera.current.transform.rotation = Quaternion.Euler(new Vector3(transform.eulerAngles.x, transform.eulerAngles.y,
-            Mathf.SmoothDampAngle(Camera.current.transform.eulerAngles.z, transform.eulerAngles.z + xmouse * 20, ref _ref, _timeToReach)));
+        if (_currentCamerea != _rearCamera)
+        {
+            float xmouse = Input.GetAxis("Mouse X");
+            _currentCamerea.transform.rotation = Quaternion.Euler(new Vector3(transform.eulerAngles.x, transform.eulerAngles.y,
+               Mathf.SmoothDampAngle(_currentCamerea.transform.eulerAngles.z, transform.eulerAngles.z + xmouse * 20, ref _ref, _timeToReach)));
+        }
     }
 
 
 
-    #endregion 
+    #endregion
 
+    #region Methods
     /// <summary>
     /// For each <see cref="_cameraValue"/> check if <see cref="CameraMode"/> is the current value <br/>
     /// if its not <see cref="GameObject.SetActive(false)"/>
@@ -91,6 +96,7 @@ public class CameraManager : MonoBehaviour
             }
 
             kvp.Key.gameObject.SetActive(true);
+            _currentCamerea = kvp.Key;
         }
     }
     /// <summary>
@@ -112,4 +118,7 @@ public class CameraManager : MonoBehaviour
                 break;
         }
     }
+
+    #endregion
+
 }

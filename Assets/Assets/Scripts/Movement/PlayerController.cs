@@ -35,6 +35,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private byte _angleToSum;
 
+    [Header("when To invert Sensibility")]
+    [SerializeField]
+    private float _lowestAngle;
+
+    [SerializeField]
+    private float _highestAngle;
 
     #endregion
 
@@ -84,16 +90,24 @@ public class PlayerController : MonoBehaviour
     }
     #endregion
 
+    #region Methods
     /// <summary>
     /// player direction follows view and sensibility option <br/>
     /// <see cref="_sensibilityHorizontal"/> <seealso cref="_sentibilityVertical"/> multiplies normal sensibility <br/>
     /// new rotation works kinda like this if the angle is 46 it rounds and divide by 90 and result is 1 than multiplies by 90 and thats the new rotaion it will have
+    /// if current angle is > <see cref="_lowestAngle"/> and < <see cref="_highestAngle"/> inverted sens
     /// </summary>
     private void RotationHandler()
     {
         float mouseHorizontal = Input.GetAxis("Mouse X") * _sensibilityHorizontal;
         float mouseVertical = Input.GetAxis("Mouse Y") * _sentibilityVertical;
         float rotationInput = Input.GetAxisRaw("Rotate") * _rotation;
+        
+        if (transform.rotation.eulerAngles.z > _lowestAngle && transform.rotation.eulerAngles.z < _highestAngle)
+        {
+            mouseHorizontal *= -1f;
+            mouseVertical *= -1f;
+        }
 
         _verticalRotation += mouseHorizontal;
         _horizontalRotation -= mouseVertical;
@@ -155,4 +169,6 @@ public class PlayerController : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
         }
     }
+
+    #endregion
 }
