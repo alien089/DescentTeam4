@@ -46,6 +46,7 @@ public class SearchProjectile : MonoBehaviour
         }
 
         m_Target = inViewEnemies[finalIndex].transform;
+        inViewEnemies.RemoveAt(finalIndex);
     }
 
     private void Move()

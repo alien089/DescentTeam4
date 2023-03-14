@@ -13,6 +13,12 @@ public class ShootingManager : MonoBehaviour
     public int ActualPrimary;
     public int ActualSecondary;
 
+    [Header("Flare")]
+    public GameObject FlareProjectile;
+    public float FlareAmmoSetupCount;
+    public float FlareAmmoCost;
+    public float FlareDeelay;
+
     [Header("Laser")]
     public GameObject LaserProjectile;
     public float LaserAmmoSetupCount;
@@ -40,6 +46,7 @@ public class ShootingManager : MonoBehaviour
     [Header("Input")]
     public KeyCode PrimaryWeapon = KeyCode.Mouse0;
     public KeyCode SecondaryWeapon = KeyCode.Mouse1;
+    public KeyCode TertiaryWeapon = KeyCode.F;
     public KeyCode ChooseFirstPrimary = KeyCode.Alpha1;
     public KeyCode ChooseSecondPrimary = KeyCode.Alpha2;
     public KeyCode ChooseFirstSecondary = KeyCode.Alpha6;
@@ -47,6 +54,7 @@ public class ShootingManager : MonoBehaviour
 
     private List<PrimaryWeapon> m_PrimaryList = new List<PrimaryWeapon>();
     private List<SecondaryWeapon> m_SecondaryList = new List<SecondaryWeapon>();
+    private PrimaryWeapon m_FlareWeapon;
 
     private TimerComponent m_Timer;
     // Start is called before the first frame update
@@ -56,6 +64,7 @@ public class ShootingManager : MonoBehaviour
 
         m_PrimaryList.Add(new Laser(LeftWeapon, RightWeapon, LaserAmmoSetupCount, LaserAmmoCost, LaserProjectile, LaserDeelay, m_Timer));
         m_PrimaryList.Add(new Vulcan(CentralWeapon, VulcanAmmoSetupCount, VulcanAmmoCost, VulcanProjectile, VulcanDeelay, m_Timer));
+        m_FlareWeapon = new FlareWeapon(CentralWeapon, FlareAmmoSetupCount, FlareAmmoCost, FlareProjectile, FlareDeelay, m_Timer);
 
         m_SecondaryList.Add(new ConcussionMissile(LeftWeapon, RightWeapon, ConcussionAmmoSetupCount, ConcussionAmmoCost, ConcussionProjectile, ConcussionDeelay));
         m_SecondaryList.Add(new HomingMissile(LeftWeapon, RightWeapon, HomingAmmoSetupCount, HomingAmmoCost, HomingProjectile, HomingDeelay));
@@ -69,6 +78,7 @@ public class ShootingManager : MonoBehaviour
         ShootPrimary();
         ChoosingSecondary();
         ShootSecondary();
+        ShootingTertiary();
     }
 
     private void ShootPrimary()
@@ -85,6 +95,15 @@ public class ShootingManager : MonoBehaviour
         if (Input.GetKeyDown(SecondaryWeapon))
         {
             SecondaryWeapon weapon = m_SecondaryList[ActualSecondary];
+            weapon.Shoot();
+        }
+    }
+
+    private void ShootingTertiary()
+    {
+        if (Input.GetKeyDown(TertiaryWeapon))
+        {
+            PrimaryWeapon weapon = m_FlareWeapon;
             weapon.Shoot();
         }
     }
