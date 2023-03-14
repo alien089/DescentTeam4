@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class ShootingManager : MonoBehaviour
@@ -47,14 +48,18 @@ public class ShootingManager : MonoBehaviour
     private List<PrimaryWeapon> m_PrimaryList = new List<PrimaryWeapon>();
     private List<SecondaryWeapon> m_SecondaryList = new List<SecondaryWeapon>();
 
-    private TimerComponent m_Timer = new TimerComponent();
+    private TimerComponent m_Timer;
     // Start is called before the first frame update
     void Start()
     {
+        m_Timer = GetComponent<TimerComponent>();
+
         m_PrimaryList.Add(new Laser(LeftWeapon, RightWeapon, LaserAmmoSetupCount, LaserAmmoCost, LaserProjectile, LaserDeelay, m_Timer));
         m_PrimaryList.Add(new Vulcan(CentralWeapon, VulcanAmmoSetupCount, VulcanAmmoCost, VulcanProjectile, VulcanDeelay, m_Timer));
 
         m_SecondaryList.Add(new ConcussionMissile(LeftWeapon, RightWeapon, ConcussionAmmoSetupCount, ConcussionAmmoCost, ConcussionProjectile, ConcussionDeelay));
+        m_SecondaryList.Add(new HomingMissile(LeftWeapon, RightWeapon, HomingAmmoSetupCount, HomingAmmoCost, HomingProjectile, HomingDeelay));
+        
     }
 
     // Update is called once per frame

@@ -31,9 +31,9 @@ public class HealthManager : MonoBehaviour
         {
             Health -= collision.gameObject.GetComponent<BaseProjectile>().Damage;
         }
-        if (collision.gameObject.CompareTag("searchProjectile"))
+        else if (collision.gameObject.CompareTag("searchProjectile"))
         {
-            //Heatlh -= collision.gameObject.GetComponent<SearchProjectile>().Damage;
+            Health -= collision.gameObject.GetComponent<SearchProjectile>().Damage;
         }
     }
 }

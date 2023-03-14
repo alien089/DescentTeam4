@@ -124,6 +124,7 @@ GameObject:
   - component: {fileID: 2248884193691502549}
   - component: {fileID: 2248884193691502548}
   - component: {fileID: 1540677181981023187}
+  - component: {fileID: 5737273}
   m_Layer: 0
   m_Name: playerShooting
   m_TagString: Untagged
@@ -199,9 +200,9 @@ MonoBehaviour:
   ConcussionAmmoSetupCount: 6
   ConcussionAmmoCost: 1
   ConcussionDeelay: 0
-  HomingProjectile: {fileID: 0}
-  HomingAmmoSetupCount: 0
-  HomingAmmoCost: 0
+  HomingProjectile: {fileID: 5117200529552386246, guid: 8a4b92fdb39f4304ea3869a8051da6d9, type: 3}
+  HomingAmmoSetupCount: 6
+  HomingAmmoCost: 1
   HomingDeelay: 0
   PrimaryWeapon: 323
   SecondaryWeapon: 324
@@ -209,6 +210,19 @@ MonoBehaviour:
   ChooseSecondPrimary: 50
   ChooseFirstSecondary: 54
   ChooseSecondSecondary: 55
+--- !u!114 &5737273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2248884193691502547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c0e2b571f2d2f34cbeb79d999617e1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CanShoot: 1
 --- !u!1 &3068990057175482311
 GameObject:
   m_ObjectHideFlags: 0

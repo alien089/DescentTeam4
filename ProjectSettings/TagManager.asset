@@ -5,11 +5,13 @@ TagManager:
   serializedVersion: 2
   tags:
   - baseProjectile
+  - Enemy
+  - searchProjectile
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - InVIew
   - Water
   - UI
   - 
