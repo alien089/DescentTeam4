@@ -4,15 +4,7 @@ using UnityEngine;
 
 public class ConcussionMissile : SecondaryWeapon
 {
-    public int AmmoCount;
-    private int m_AmmoCost;
-
-    private Transform[] m_SpawnPoints = new Transform[2];
     private GameObject m_ConcussionProjectile;
-    private float m_Deelay;
-    private int m_ActualShot;
-    private int m_NextShot;
-
     public ConcussionMissile(Transform left, Transform right, int ammoCount, int ammoCost, GameObject concussionProjectile, float deelay)
     {
         m_SpawnPoints[0] = left;

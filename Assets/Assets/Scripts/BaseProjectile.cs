@@ -25,9 +25,14 @@ public class BaseProjectile : MonoBehaviour
         //rb.velocity = transform.forward * Speed;
     }
 
+    private void Explode()
+    {
+        Destroy(gameObject);
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
-        if(!collision.gameObject.CompareTag("Player"))
-            Destroy(gameObject);
+        if (!collision.gameObject.CompareTag("Player"))
+            Explode();
     }
 }

@@ -27,12 +27,17 @@ public class FlareProjectile : MonoBehaviour
         //rb.velocity = transform.forward * Speed;
     }
 
+    private void Freeze()
+    {
+        m_CanMove = false;
+        StartCoroutine(TimerBeforeDestroy());
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (!collision.gameObject.CompareTag("Player"))
         {
-            m_CanMove = false;
-            StartCoroutine(TimerBeforeDestroy());
+            Freeze();
         }
     }
 

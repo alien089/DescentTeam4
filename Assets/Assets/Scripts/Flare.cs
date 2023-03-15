@@ -2,19 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FlareWeapon : PrimaryWeapon
+public class Flare : PrimaryWeapon
 {
-    public float AmmoCount;
-    private float m_AmmoCost;
+    public new float AmmoCount;
+    private new float m_AmmoCost;
 
-    private Transform SpawnPoints;
     private GameObject m_FlareProjectile;
-    private float m_Deelay;
-
-    private TimerComponent m_Timer;
-    public FlareWeapon(Transform spawn, float ammoCount, float ammoCost, GameObject flareProjectile, float deelay, TimerComponent timer)
+    public Flare(Transform spawn, float ammoCount, float ammoCost, GameObject flareProjectile, float deelay, TimerComponent timer)
     {
-        SpawnPoints = spawn;
+        m_SpawnBullet = spawn;
         m_AmmoCost = ammoCost;
         AmmoCount = ammoCount;
         m_FlareProjectile = flareProjectile;
@@ -31,7 +27,7 @@ public class FlareWeapon : PrimaryWeapon
             {
                 GameObject bullet;
 
-                bullet = UnityEngine.Object.Instantiate(m_FlareProjectile, SpawnPoints.position, SpawnPoints.rotation);
+                bullet = UnityEngine.Object.Instantiate(m_FlareProjectile, m_SpawnBullet.position, m_SpawnBullet.rotation);
 
                 m_Timer.Coroutine(m_Deelay);
 

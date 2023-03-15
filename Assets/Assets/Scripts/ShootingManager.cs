@@ -64,7 +64,7 @@ public class ShootingManager : MonoBehaviour
 
         m_PrimaryList.Add(new Laser(LeftWeapon, RightWeapon, LaserAmmoSetupCount, LaserAmmoCost, LaserProjectile, LaserDeelay, m_Timer));
         m_PrimaryList.Add(new Vulcan(CentralWeapon, VulcanAmmoSetupCount, VulcanAmmoCost, VulcanProjectile, VulcanDeelay, m_Timer));
-        m_FlareWeapon = new FlareWeapon(CentralWeapon, FlareAmmoSetupCount, FlareAmmoCost, FlareProjectile, FlareDeelay, m_Timer);
+        m_FlareWeapon = new Flare(CentralWeapon, FlareAmmoSetupCount, FlareAmmoCost, FlareProjectile, FlareDeelay, m_Timer);
 
         m_SecondaryList.Add(new ConcussionMissile(LeftWeapon, RightWeapon, ConcussionAmmoSetupCount, ConcussionAmmoCost, ConcussionProjectile, ConcussionDeelay));
         m_SecondaryList.Add(new HomingMissile(LeftWeapon, RightWeapon, HomingAmmoSetupCount, HomingAmmoCost, HomingProjectile, HomingDeelay));

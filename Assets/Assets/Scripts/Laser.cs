@@ -5,18 +5,14 @@ using UnityEngine;
 
 public class Laser : PrimaryWeapon
 {
-    public float AmmoCount;
-    private float m_AmmoCost;
+    public new float AmmoCount;
+    private new float m_AmmoCost;
 
-    private Transform[] m_SpawnPoints = new Transform[2];
     private GameObject m_LaserProjectile;
-    private float m_Deelay;
-
-    private TimerComponent m_Timer;
     public Laser(Transform left, Transform right, float ammoCount, float ammoCost, GameObject energyProjectile, float deelay, TimerComponent timer)
     {
-        m_SpawnPoints[0] = left;
-        m_SpawnPoints[1] = right;
+        m_SpawnBullets[0] = left;
+        m_SpawnBullets[1] = right;
         m_AmmoCost = ammoCost;
         AmmoCount = ammoCount;
         m_LaserProjectile = energyProjectile;
@@ -34,8 +30,8 @@ public class Laser : PrimaryWeapon
                 GameObject left;
                 GameObject right;
 
-                left = UnityEngine.Object.Instantiate(m_LaserProjectile, m_SpawnPoints[0].position, m_SpawnPoints[0].rotation);
-                right = UnityEngine.Object.Instantiate(m_LaserProjectile, m_SpawnPoints[1].position, m_SpawnPoints[1].rotation);
+                left = UnityEngine.Object.Instantiate(m_LaserProjectile, m_SpawnBullets[0].position, m_SpawnBullets[0].rotation);
+                right = UnityEngine.Object.Instantiate(m_LaserProjectile, m_SpawnBullets[1].position, m_SpawnBullets[1].rotation);
 
                 m_Timer.Coroutine(m_Deelay);
 

@@ -3,16 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class HomingMissile : SecondaryWeapon
-{
-    public int AmmoCount;
-    private int m_AmmoCost;
-
-    private Transform[] m_SpawnPoints = new Transform[2];
+{   
     private GameObject m_HomingProjectile;
-    private float m_Deelay;
-    private int m_ActualShot;
-    private int m_NextShot;
-    
     public HomingMissile(Transform left, Transform right, int ammoCount, int ammoCost, GameObject homingProjectile, float deelay)
     {
         m_SpawnPoints[0] = left;
