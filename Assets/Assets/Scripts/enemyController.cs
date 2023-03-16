@@ -14,15 +14,15 @@ public class enemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    private void OnBecameVisible()
+    protected void OnBecameVisible()
     {
         gameObject.layer = 3;
     }
 
-    private void OnBecameInvisible()
+    protected void OnBecameInvisible()
     {
         gameObject.layer = 0;
     }
