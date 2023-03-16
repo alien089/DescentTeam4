@@ -42,7 +42,6 @@ public class Bobbing : MonoBehaviour
         m_isMoving = Player.IsMoving;
         float bobbing = Mathf.Sin(Time.time * m_bobbingSpeed) * m_bobbingPower;
         
-        Vector3 playerPos = transform.position;
         Vector3 bobbingForce = new Vector3(0f, bobbing, 0f);
         if (m_CasePlayer)
         {

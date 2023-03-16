@@ -91,6 +91,7 @@ public class PlayerController : MonoBehaviour
     #endregion
 
     #region Methods
+
     /// <summary>
     /// player direction follows view and sensibility option <br/>
     /// <see cref="m_sensibilityHorizontal"/> <seealso cref="m_sentibilityVertical"/> multiplies normal sensibility <br/>
@@ -135,7 +136,7 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void MovementHandler()
     {
-        m_canMove = Camera.CanMove;
+        m_canMove = true /*Camera.CanMove*/;
         if (m_canMove)
         {
             if (MoveForward + MoveSideWays + MoveForward != 0)

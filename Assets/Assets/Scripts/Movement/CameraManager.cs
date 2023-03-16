@@ -65,7 +65,7 @@ public class CameraManager : MonoBehaviour
             CameraMode = System.Enum.IsDefined(typeof(ECameraMode), CameraMode + 1) ? ++CameraMode : 0;
         }
 
-        BlockMovement();
+        //BlockMovement();
 
         if (m_currentCamerea != m_rearCamera)
         {
@@ -74,8 +74,6 @@ public class CameraManager : MonoBehaviour
                Mathf.SmoothDampAngle(m_currentCamerea.transform.eulerAngles.z, transform.eulerAngles.z + xmouse * 20, ref m_ref, m_timeToReach)));
         }
     }
-
-
 
     #endregion
 

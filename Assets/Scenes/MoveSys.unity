@@ -1379,8 +1379,44 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1437757027505594258, guid: 2ac841b42c718ec4b923439224341697, type: 3}
+      propertyPath: m_rearCamera
+      value: 
+      objectReference: {fileID: 1554322035572530741}
+    - target: {fileID: 1437757027505594258, guid: 2ac841b42c718ec4b923439224341697, type: 3}
+      propertyPath: m_timeToReach
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1437757027505594258, guid: 2ac841b42c718ec4b923439224341697, type: 3}
+      propertyPath: m_angleWhenMoving
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 1437757027505594258, guid: 2ac841b42c718ec4b923439224341697, type: 3}
+      propertyPath: m_firstPersonCamera
+      value: 
+      objectReference: {fileID: 2919528899064113769}
+    - target: {fileID: 1437757027505594267, guid: 2ac841b42c718ec4b923439224341697, type: 3}
+      propertyPath: m_CasePlayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1437757027505594267, guid: 2ac841b42c718ec4b923439224341697, type: 3}
+      propertyPath: m_bobbingPower
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1437757027505594267, guid: 2ac841b42c718ec4b923439224341697, type: 3}
+      propertyPath: m_bobbingSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1437757027955720155, guid: 2ac841b42c718ec4b923439224341697, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1437757027955720155, guid: 2ac841b42c718ec4b923439224341697, type: 3}
       propertyPath: _angleText
+      value: 
+      objectReference: {fileID: 2064638533}
+    - target: {fileID: 1437757027955720155, guid: 2ac841b42c718ec4b923439224341697, type: 3}
+      propertyPath: m_angleText
       value: 
       objectReference: {fileID: 2064638533}
     - target: {fileID: 4285087594590284672, guid: 2ac841b42c718ec4b923439224341697, type: 3}
@@ -1388,12 +1424,52 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 4285087594590284730, guid: 2ac841b42c718ec4b923439224341697, type: 3}
+      propertyPath: m_rotation
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 4285087594590284730, guid: 2ac841b42c718ec4b923439224341697, type: 3}
       propertyPath: _lowestAngle
       value: 175
       objectReference: {fileID: 0}
     - target: {fileID: 4285087594590284730, guid: 2ac841b42c718ec4b923439224341697, type: 3}
+      propertyPath: m_angleToSum
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4285087594590284730, guid: 2ac841b42c718ec4b923439224341697, type: 3}
+      propertyPath: m_slideSpeed
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4285087594590284730, guid: 2ac841b42c718ec4b923439224341697, type: 3}
       propertyPath: _highestAngle
       value: 195
+      objectReference: {fileID: 0}
+    - target: {fileID: 4285087594590284730, guid: 2ac841b42c718ec4b923439224341697, type: 3}
+      propertyPath: m_lowestAngle
+      value: 175
+      objectReference: {fileID: 0}
+    - target: {fileID: 4285087594590284730, guid: 2ac841b42c718ec4b923439224341697, type: 3}
+      propertyPath: m_forwardSpeed
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 4285087594590284730, guid: 2ac841b42c718ec4b923439224341697, type: 3}
+      propertyPath: m_highestAngle
+      value: 195
+      objectReference: {fileID: 0}
+    - target: {fileID: 4285087594590284730, guid: 2ac841b42c718ec4b923439224341697, type: 3}
+      propertyPath: m_upAndDownSpeed
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4285087594590284730, guid: 2ac841b42c718ec4b923439224341697, type: 3}
+      propertyPath: m_sentibilityVertical
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4285087594590284730, guid: 2ac841b42c718ec4b923439224341697, type: 3}
+      propertyPath: m_goToClosestAngleSpeed
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 4285087594590284730, guid: 2ac841b42c718ec4b923439224341697, type: 3}
+      propertyPath: m_sensibilityHorizontal
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4285087594590284731, guid: 2ac841b42c718ec4b923439224341697, type: 3}
       propertyPath: m_RootOrder
