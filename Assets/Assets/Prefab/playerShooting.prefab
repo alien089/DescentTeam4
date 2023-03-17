@@ -163,14 +163,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1aea1c59287b3334ca34f6a1966a3812, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sentibilityVertical: 1
-  _sensibilityHorizontal: 1
-  _hoverSpeed: 1
-  _maxSpeed: 0
-  _rotationSmoothness: 0
-  _rotation: 0
-  _firstPersonCamera: {fileID: 0}
-  _rearCamera: {fileID: 0}
+  m_sentibilityVertical: 1
+  m_sensibilityHorizontal: 1
+  m_forwardSpeed: 1
+  m_slideSpeed: 1
+  m_upAndDownSpeed: 1
+  m_rotation: 50
+  m_goToClosestAngleSpeed: 0
+  m_angleToSum: 0
+  m_lowestAngle: 0
+  m_highestAngle: 0
 --- !u!114 &1540677181981023187
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,6 +190,10 @@ MonoBehaviour:
   CentralWeapon: {fileID: 6662187245680771769}
   ActualPrimary: 0
   ActualSecondary: 0
+  FlareProjectile: {fileID: 0}
+  FlareAmmoSetupCount: 0
+  FlareAmmoCost: 0
+  FlareDeelay: 0
   LaserProjectile: {fileID: 5117200529552386246, guid: d32a0c237f8034546b27e481e1e29c32, type: 3}
   LaserAmmoSetupCount: 100
   LaserAmmoCost: 0.2
@@ -206,6 +212,7 @@ MonoBehaviour:
   HomingDeelay: 0
   PrimaryWeapon: 323
   SecondaryWeapon: 324
+  TertiaryWeapon: 102
   ChooseFirstPrimary: 49
   ChooseSecondPrimary: 50
   ChooseFirstSecondary: 54
@@ -372,7 +379,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8449039808624240835}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.16, z: 0}
+  m_LocalPosition: {x: 0, y: -0.16, z: 0.72}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2248884193691502549}
