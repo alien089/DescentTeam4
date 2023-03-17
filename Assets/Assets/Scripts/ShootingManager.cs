@@ -52,8 +52,8 @@ public class ShootingManager : MonoBehaviour
     public KeyCode ChooseFirstSecondary = KeyCode.Alpha6;
     public KeyCode ChooseSecondSecondary = KeyCode.Alpha7;
 
-    private List<PrimaryWeapon> m_PrimaryList = new List<PrimaryWeapon>();
-    private List<SecondaryWeapon> m_SecondaryList = new List<SecondaryWeapon>();
+    public List<PrimaryWeapon> m_PrimaryList = new List<PrimaryWeapon>();
+    public List<SecondaryWeapon> m_SecondaryList = new List<SecondaryWeapon>();
     private PrimaryWeapon m_FlareWeapon;
 
     private TimerComponent m_Timer;

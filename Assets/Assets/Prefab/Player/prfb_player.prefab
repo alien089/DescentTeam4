@@ -54,7 +54,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3571092827132210288}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 0, z: 0}
+  m_LocalPosition: {x: 0.794, y: 0, z: 0.004}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8308445583880759534}
@@ -209,8 +209,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1aea1c59287b3334ca34f6a1966a3812, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_sentibilityVertical: 5
-  m_sensibilityHorizontal: 5
+  m_sentibilityVertical: 3
+  m_sensibilityHorizontal: 3
   m_forwardSpeed: 50
   m_slideSpeed: 25
   m_upAndDownSpeed: 25
@@ -247,7 +247,7 @@ MonoBehaviour:
   VulcanProjectile: {fileID: 5117200529552386246, guid: 3852fe1836f0fb8438b050c842a26081, type: 3}
   VulcanAmmoSetupCount: 2500
   VulcanAmmoCost: 1
-  VulcanDeelay: 0.1
+  VulcanDeelay: 0.07
   ConcussionProjectile: {fileID: 5117200529552386246, guid: 92df6beaf028d4a41a2499eec25322db, type: 3}
   ConcussionAmmoSetupCount: 6
   ConcussionAmmoCost: 1
@@ -514,7 +514,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8703980782021455545}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1, y: 0, z: 0}
+  m_LocalPosition: {x: -0.775, y: 0, z: -0.004}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8308445583880759534}
