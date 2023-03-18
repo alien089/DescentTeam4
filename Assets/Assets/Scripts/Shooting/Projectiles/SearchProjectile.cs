@@ -3,11 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public class SearchProjectile : MonoBehaviour
+public class SearchProjectile : GenericProjectile, IBullet
 {
-    public int Damage;
-    public float Speed;
-
     private Transform m_Target;
 
     private void Start()
@@ -49,7 +46,7 @@ public class SearchProjectile : MonoBehaviour
         inViewEnemies.RemoveAt(finalIndex);
     }
 
-    private void Move()
+    protected override void Move()
     {
         try
         {
@@ -61,9 +58,14 @@ public class SearchProjectile : MonoBehaviour
         }
     }
 
+    protected override void Explode()
+    {
+        Destroy(gameObject);
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (!collision.gameObject.CompareTag("Player"))
-            Destroy(gameObject);
+            Explode();
     }
 }

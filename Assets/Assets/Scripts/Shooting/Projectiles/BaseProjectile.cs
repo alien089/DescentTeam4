@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public class BaseProjectile : MonoBehaviour
+public class BaseProjectile : GenericProjectile, IBullet
 {
-    public int Damage;
-    public float Speed;
     //private Rigidbody rb;
 
     private void Start()
@@ -19,20 +17,20 @@ public class BaseProjectile : MonoBehaviour
         Move();
     }
 
-    private void Move()
+    protected override void Move()
     {
         transform.Translate(transform.forward * Speed * Time.deltaTime, Space.World);
         //rb.velocity = transform.forward * Speed;
     }
 
-    private void Explode()
+    protected override void Explode()
     {
         Destroy(gameObject);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (!collision.gameObject.CompareTag("Player"))
+        if (!collision.gameObject.TryGetComponent<IPlayer>(out IPlayer player))
             Explode();
     }
 }

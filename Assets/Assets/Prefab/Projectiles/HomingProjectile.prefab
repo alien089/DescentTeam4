@@ -160,6 +160,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Damage: 2
   Speed: 10
+  IsPlayer: 1
 --- !u!1001 &5724256278422853979
 PrefabInstance:
   m_ObjectHideFlags: 0
