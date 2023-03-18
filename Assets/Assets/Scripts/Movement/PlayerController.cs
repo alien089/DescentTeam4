@@ -72,6 +72,7 @@ public class PlayerController : MonoBehaviour
     {
         TryGetComponent<Rigidbody>(out _rigidBody);
         TryGetComponent<CameraManager>(out Camera);
+        //DontDestroyOnLoad(this.gameObject);
     }
 
     private void Start()
@@ -164,11 +165,17 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void LockCursor()
     {
-        if (LockedCursor)
+        if (Input.GetKey(KeyCode.T))
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.Confined;
+        }
+        else
         {
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
         }
+
     }
 
     #endregion
