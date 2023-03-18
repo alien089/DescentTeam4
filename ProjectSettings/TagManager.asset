@@ -7,6 +7,7 @@ TagManager:
   - baseProjectile
   - Enemy
   - searchProjectile
+  - KeyCard1
   layers:
   - Default
   - TransparentFX

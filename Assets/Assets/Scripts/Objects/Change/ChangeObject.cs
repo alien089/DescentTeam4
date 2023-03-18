@@ -11,7 +11,7 @@ public class ChangeObject : MonoBehaviour
     {
         if (collision.gameObject.layer == 6)
         {
-            Instantiate(_newObject, transform.position, transform.rotation);
+            GameObject obj =Instantiate(_newObject, transform.position, transform.rotation, transform.parent);
             Destroy(gameObject);
         }
     }

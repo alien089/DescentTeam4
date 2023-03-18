@@ -5,25 +5,26 @@ using UnityEngine;
 public class OpenDoor : MonoBehaviour
 {
     [SerializeField]
-    private Animator _animator;
+    private Animator _doorAnimation;
 
     [SerializeField]
-    private string _nameRequiredBool;
+    private string _nameRequiredDoorBool;
 
     [SerializeField]
     private float _timeToClose;
+
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.layer == 6 || collision.gameObject.tag == "Player")
         {
-            _animator.SetBool(_nameRequiredBool, true);
+            _doorAnimation.SetBool(_nameRequiredDoorBool, true);
             StartCoroutine(CloseDoor(_timeToClose));
         }
     }
     private IEnumerator CloseDoor (float value)
     {
         yield return new WaitForSeconds(value);
-        _animator.SetBool(_nameRequiredBool, false);
+        _doorAnimation.SetBool(_nameRequiredDoorBool, false);
     }
 }
