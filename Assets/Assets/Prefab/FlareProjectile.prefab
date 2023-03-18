@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 66883880175652288}
   - component: {fileID: 6871435175869545148}
   - component: {fileID: -355770502150785807}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FlareProjectile
   m_TagString: baseProjectile
   m_Icon: {fileID: 0}

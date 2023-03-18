@@ -107,7 +107,7 @@ GameObject:
   - component: {fileID: 8680182040554673899}
   - component: {fileID: -6356952947653434985}
   - component: {fileID: 3938309633484639181}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ConcussionProjectile
   m_TagString: baseProjectile
   m_Icon: {fileID: 0}

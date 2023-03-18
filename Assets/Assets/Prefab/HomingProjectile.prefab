@@ -107,7 +107,7 @@ GameObject:
   - component: {fileID: 8680182040554673899}
   - component: {fileID: -6356952947653434985}
   - component: {fileID: -612618735638513114}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: HomingProjectile
   m_TagString: searchProjectile
   m_Icon: {fileID: 0}
