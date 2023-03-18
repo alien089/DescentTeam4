@@ -86,7 +86,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        LockCursor();
+        //LockCursor();
         RotationHandler();
     }
     #endregion

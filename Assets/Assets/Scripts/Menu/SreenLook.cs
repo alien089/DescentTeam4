@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class SreenLook : MonoBehaviour
 {
+    private void Awake()
+    {
+        DontDestroyOnLoad(this.gameObject);
+    }
     private void Update()
     {
         if (Input.GetKey(KeyCode.T))
@@ -11,5 +15,11 @@ public class SreenLook : MonoBehaviour
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.Confined;
         }
+        else
+        {
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+
     }
 }
