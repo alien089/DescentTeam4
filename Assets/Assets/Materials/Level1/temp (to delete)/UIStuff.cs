@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,9 @@ public class UIStuff : MonoBehaviour
     public Text Ammo1;
     public Text weapon2;
     public Text Ammo2;
+
+    public Text Death;
+    public Text GameOver;
 
     // Start is called before the first frame update
     void Start()
@@ -41,5 +45,24 @@ public class UIStuff : MonoBehaviour
             weapon2.text = "Homing missile";
             Ammo2.text = weaponScript.m_SecondaryList[1].AmmoCount.ToString();
         }
+
+        CheckDeath();
+        CheckGameOver();
+    }
+
+    private void CheckGameOver()
+    {
+        if (StageManager.instance.PlayerState == StageManager.PlayerStates.GAMEOVER)
+            GameOver.gameObject.SetActive(true);
+        else
+            GameOver.gameObject.SetActive(false);
+    }
+
+    private void CheckDeath()
+    {
+        if (StageManager.instance.PlayerState == StageManager.PlayerStates.DEAD)
+            Death.gameObject.SetActive(true);
+        else
+            Death.gameObject.SetActive(false);
     }
 }

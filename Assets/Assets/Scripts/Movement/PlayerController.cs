@@ -3,9 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, IDamageable 
 {
     #region BackingFields
+    [Header("")]
+    public int InitialShield = 100;
+    public int ActualShield = 100;
 
     [Header("Sensibility")]
     [SerializeField]
@@ -54,7 +57,7 @@ public class PlayerController : MonoBehaviour
     private Quaternion targetRotation;
 
     private CameraManager Camera;
-
+    
     public float MoveUpwards { get => Input.GetAxisRaw("Fly") * m_upAndDownSpeed; private set => MoveUpwards = value; }
     public float MoveSideWays { get => Input.GetAxisRaw("Horizontal") * m_slideSpeed; private set => MoveSideWays = value; }
     public float MoveForward { get => Input.GetAxisRaw("Vertical") * m_forwardSpeed; private set => MoveSideWays = value; }
@@ -85,6 +88,8 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        Damage(2);
+        LifeCheck();
         LockCursor();
         RotationHandler();
     }
@@ -169,6 +174,21 @@ public class PlayerController : MonoBehaviour
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
         }
+    }
+
+    public void Damage(int damage)
+    {
+        if(Input.GetKeyDown(KeyCode.Space))
+            ActualShield -= 50;
+    }
+
+    public void LifeCheck()
+    {
+        if (ActualShield == 0 && StageManager.instance.PlayerState == StageManager.PlayerStates.LIVE)
+            StageManager.instance.Death();
+        else if (Input.GetKeyDown(KeyCode.Tab) && StageManager.instance.PlayerState == StageManager.PlayerStates.DEAD)
+            ActualShield = InitialShield;
+            StageManager.instance.Respawn(gameObject);
     }
 
     #endregion

@@ -30,7 +30,11 @@ public class BaseProjectile : GenericProjectile, IBullet
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (!collision.gameObject.TryGetComponent<IPlayer>(out IPlayer player))
-            Explode();
+        if(IsPlayer)
+            if (!collision.gameObject.TryGetComponent<IPlayer>(out IPlayer player))
+                Explode();
+        else
+            if (collision.gameObject.TryGetComponent<IPlayer>(out IPlayer pplayer))
+                Explode();
     }
 }
