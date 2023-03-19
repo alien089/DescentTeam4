@@ -5,10 +5,10 @@ using UnityEngine;
 public class DestroyEffect : MonoBehaviour
 {
     [SerializeField]
-    private GameObject _effect;
+    private GameObject m_effect;
 
     private void OnDestroy()
     {
-        Instantiate(_effect, transform.position, transform.rotation);
+        Instantiate(m_effect, transform.position, transform.rotation);
     }
 }

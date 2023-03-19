@@ -5,20 +5,21 @@ using UnityEngine;
 public class StaminaRecovery : MonoBehaviour
 {
     [SerializeField]
-    private float _addEveryUpdate;
+    private float m_addEveryUpdate;
     [SerializeField]
-    private float _maxRecovery;
+    private float m_maxRecovery;
 
+    [Header("Dont Change it , its just to see")]
     [SerializeField]
-    private float current;
+    private float m_current;
 
     private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            if (current < 100)
+            if (m_current < 100)
             {
-                current += _addEveryUpdate;
+                m_current += m_addEveryUpdate;
             }
 
         }

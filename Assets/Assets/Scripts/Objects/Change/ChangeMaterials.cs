@@ -8,36 +8,36 @@ public class ChangeMaterials : MonoBehaviour
     #region Backingields
 
     [SerializeField]
-    private Material[] _material;
+    private Material[] m_material;
 
     [SerializeField]
-    private float[] _health;
+    private float[] m_health;
 
     #endregion
 
     #region Fields
 
-    private HealthManager _hp;
-    float currentHealth;
+    private HealthManager m_hp;
+    private float m_currentHealth;
 
     #endregion
 
     #region Body
     private void Start()
     {
-        TryGetComponent<HealthManager>(out _hp);
+        TryGetComponent<HealthManager>(out m_hp);
     }
 
     private void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.layer == 6)
         {
-            currentHealth = _hp.Health;
-            for (int i = 0; i < _health.Length; i++)
+            m_currentHealth = m_hp.Health;
+            for (int i = 0; i < m_health.Length; i++)
             {
-                if (currentHealth <= _health[i])
+                if (m_currentHealth <= m_health[i])
                 {
-                    GetComponent<Renderer>().material = _material[i];
+                    GetComponent<Renderer>().material = m_material[i];
                 }
             }
         }

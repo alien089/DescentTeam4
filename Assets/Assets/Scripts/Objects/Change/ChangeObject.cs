@@ -5,13 +5,13 @@ using UnityEngine;
 public class ChangeObject : MonoBehaviour
 {
     [SerializeField]
-    private GameObject _newObject;
+    private GameObject m_newObject;
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.layer == 6)
         {
-            GameObject obj =Instantiate(_newObject, transform.position, transform.rotation, transform.parent);
+            GameObject obj =Instantiate(m_newObject, transform.position, transform.rotation, transform.parent);
             Destroy(gameObject);
         }
     }

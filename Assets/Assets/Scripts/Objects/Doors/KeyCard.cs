@@ -11,21 +11,32 @@ enum KeyCardNumber
 
 public class KeyCard : MonoBehaviour
 {
+    #region BackingFields
+
     [SerializeField]
-    private Animator _openDoor;
+    private Animator m_openDoor;
+
     [SerializeField]
-    private float _timeToClose;
+    private float m_timeToClose;
+
     [SerializeField]
-    private KeyCardNumber currentKeyCard;
+    private KeyCardNumber m_currentKeyCard;
+
+    #endregion
+
+    #region Fields
+
     private PickUpCard PickUp;
+
     private static bool k1, k2, k3;
-    // Start is called before the first frame update
+
+    #endregion
+
     void Start()
     {
         PickUp = FindObjectOfType<PickUpCard>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         k1 = PickUp.KeyCard1;
@@ -36,20 +47,20 @@ public class KeyCard : MonoBehaviour
     {
         if (collision.gameObject.layer == 6 || collision.gameObject.tag == "Player")
         {
-            if (k1 && currentKeyCard == KeyCardNumber.KeyCard1)
+            if (k1 && m_currentKeyCard == KeyCardNumber.KeyCard1)
             {
-                _openDoor.SetBool("open", true);
-                StartCoroutine(CloseDoor(_timeToClose, _openDoor, "open"));
+                m_openDoor.SetBool("open", true);
+                StartCoroutine(CloseDoor(m_timeToClose, m_openDoor, "open"));
             }
-            if (k2 && currentKeyCard == KeyCardNumber.KeyCard2)
+            if (k2 && m_currentKeyCard == KeyCardNumber.KeyCard2)
             {
-                _openDoor.SetBool("open", true);
-                StartCoroutine(CloseDoor(_timeToClose, _openDoor, "open"));
+                m_openDoor.SetBool("open", true);
+                StartCoroutine(CloseDoor(m_timeToClose, m_openDoor, "open"));
             }
-            if (k3 && currentKeyCard == KeyCardNumber.keyCard3)
+            if (k3 && m_currentKeyCard == KeyCardNumber.keyCard3)
             {
-                _openDoor.SetBool("open", true);
-                StartCoroutine(CloseDoor(_timeToClose, _openDoor, "open"));
+                m_openDoor.SetBool("open", true);
+                StartCoroutine(CloseDoor(m_timeToClose, m_openDoor, "open"));
             }
         }
     }

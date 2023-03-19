@@ -5,25 +5,25 @@ using UnityEngine;
 public class DestroyAnim1 : MonoBehaviour
 {
     [SerializeField]
-    private Animator _animation;
+    private Animator m_animation;
     [SerializeField]
-    private string _nameOfBoolean;
+    private string m_nameOfBoolean;
     [SerializeField]
-    private bool _closeAnimation;
+    private bool m_closeAnimation;
     [SerializeField]
-    private float _waitToClose;
+    private float m_waitToClose;
 
     private void OnDestroy()
     {
-        _animation.SetBool(_nameOfBoolean, true);
-        if (_closeAnimation == true)
+        m_animation.SetBool(m_nameOfBoolean, true);
+        if (m_closeAnimation == true)
         {
-            StartCoroutine(Close(_waitToClose, _nameOfBoolean));
+            StartCoroutine(Close(m_waitToClose, m_nameOfBoolean));
         }
     }
     private IEnumerator Close(float value, string boolean)
     {
         yield return new WaitForSeconds(value);
-        _animation.SetBool(boolean, false);
+        m_animation.SetBool(boolean, false);
     }
 }
