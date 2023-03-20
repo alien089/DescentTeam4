@@ -3,13 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour, IDamageable 
+public class PlayerController : MonoBehaviour 
 {
     #region BackingFields
-    [Header("")]
-    public int InitialShield = 100;
-    public int ActualShield = 100;
-
     [Header("Sensibility")]
     [SerializeField]
     private float m_sentibilityVertical = 1;
@@ -88,8 +84,6 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     private void Update()
     {
-        Damage(2);
-        LifeCheck();
         LockCursor();
         RotationHandler();
     }
@@ -175,21 +169,5 @@ public class PlayerController : MonoBehaviour, IDamageable
             Cursor.lockState = CursorLockMode.Locked;
         }
     }
-
-    public void Damage(int damage)
-    {
-        if(Input.GetKeyDown(KeyCode.Space))
-            ActualShield -= 50;
-    }
-
-    public void LifeCheck()
-    {
-        if (ActualShield == 0 && StageManager.instance.PlayerState == StageManager.PlayerStates.LIVE)
-            StageManager.instance.Death();
-        else if (Input.GetKeyDown(KeyCode.Tab) && StageManager.instance.PlayerState == StageManager.PlayerStates.DEAD)
-            ActualShield = InitialShield;
-            StageManager.instance.Respawn(gameObject);
-    }
-
     #endregion
 }

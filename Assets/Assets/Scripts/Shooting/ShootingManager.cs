@@ -74,16 +74,6 @@ public class ShootingManager : MonoBehaviour, IPlayer
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyUp(KeyCode.Escape))
-        {
-            StageManager.instance.Death();
-        }
-
-        if(Input.GetKeyUp(KeyCode.Return) && StageManager.instance.PlayerState == StageManager.PlayerStates.DEAD)
-        {
-            StageManager.instance.Respawn(gameObject);
-        }
-
         ChoosingPrimary();
         ShootPrimary();
         ChoosingSecondary();
