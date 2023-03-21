@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 3965409220218956413}
   - component: {fileID: 3965409220218956412}
   - component: {fileID: 7712019121712324099}
-  - component: {fileID: 3965409221608241239}
+  - component: {fileID: 795607135446650713}
   m_Layer: 0
   m_Name: Ai
   m_TagString: Untagged
@@ -181,12 +181,17 @@ MonoBehaviour:
   <RotationSpeed>k__BackingField: 200
   <Radius>k__BackingField: 3
   <RadiusSpeed>k__BackingField: 2
-  SpawnPoints:
+  m_shooting:
+    <Description>k__BackingField: A set of values for shooting settings
+  <SpawnPoints>k__BackingField:
   - {fileID: 6523188243111756251}
   - {fileID: 1963097816716634421}
-  EnemyProjectile: {fileID: 5117200529552386246, guid: d32a0c237f8034546b27e481e1e29c32, type: 3}
-  EnemyAmmoSetupCount: 1
-  EnemyDeelay: 0.2
+  <EnemyProjectile>k__BackingField: {fileID: 5117200529552386246, guid: d32a0c237f8034546b27e481e1e29c32, type: 3}
+  <EnemyDeelay>k__BackingField: 1
+  NotWorking:
+    <Description>k__BackingField: in progress
+  <BurstTime>k__BackingField: 3
+  <TimeBetweeenBursts>k__BackingField: 5
 --- !u!54 &3965409220218956412
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -216,7 +221,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanShoot: 1
---- !u!114 &3965409221608241239
+--- !u!114 &795607135446650713
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -225,10 +230,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 3965409220218956407}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c0e2b571f2d2f34cbeb79d999617e1b, type: 3}
+  m_Script: {fileID: 11500000, guid: a4261a710a6a0d84ab5738ba7b91072e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CanShoot: 1
+  _probabilityOfDrop: 0
+  _drop: {fileID: 0}
 --- !u!1 &8110826134569148198
 GameObject:
   m_ObjectHideFlags: 0

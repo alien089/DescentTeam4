@@ -15,7 +15,11 @@ public class DropRate : MonoBehaviour
     {
         if (Random.Range(0f,100f) <= _probabilityOfDrop)
         {
-            Instantiate(_drop, transform.position ,transform.rotation, transform.parent);
+            if (_drop != null)
+            {
+                Instantiate(_drop, transform.position, transform.rotation, transform.parent);
+            }
+
         }
 
     }

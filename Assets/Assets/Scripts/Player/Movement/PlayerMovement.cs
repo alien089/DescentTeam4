@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour 
 {
+
     #region BackingFields
     [Header("Sensibility")]
     [SerializeField]
@@ -49,10 +50,10 @@ public class PlayerMovement : MonoBehaviour
     private bool m_isMoving, m_canMove;
     private float _horizontalRotation, m_verticalRotation;
     private Rigidbody _rigidBody;
-    private bool m_rotateAngle = false;
     private Quaternion targetRotation;
 
-    private CameraManager Camera;
+    
+    private CameraManager Camera; // if in future player will need to changhe way he moves in base of current camera
     
     public float MoveUpwards { get => Input.GetAxisRaw("Fly") * m_upAndDownSpeed; private set => MoveUpwards = value; }
     public float MoveSideWays { get => Input.GetAxisRaw("Horizontal") * m_slideSpeed; private set => MoveSideWays = value; }
@@ -122,7 +123,7 @@ public class PlayerMovement : MonoBehaviour
         {
             transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z + (rotationInput * Time.deltaTime));
         }
-        else if (rotationInput == 0 && !m_rotateAngle)
+        else if (rotationInput == 0)
         {
             float newRotation = Mathf.Round(transform.localEulerAngles.z / 90) * 90;
             float zRotation = Mathf.MoveTowards(transform.localEulerAngles.z, newRotation, m_goToClosestAngleSpeed * Time.deltaTime);
@@ -155,26 +156,6 @@ public class PlayerMovement : MonoBehaviour
                 m_isMoving = false;
 
         }
-    }
-
-    /// <summary>
-    /// Based on bool <see cref="LockedCursor"/> ,<br/> 
-    /// sets <see cref="Cursor.visible = false"/> making it so you cant see your cursor and, <br/>
-    /// sets <see cref="Cursor.lockState "/> Locked making it so your cursor stays at the middle of the screen.
-    /// </summary>
-    private void LockCursor()
-    {
-        if (Input.GetKey(KeyCode.T))
-        {
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.Confined;
-        }
-        else
-        {
-            Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked;
-        }
-
     }
     #endregion
 }

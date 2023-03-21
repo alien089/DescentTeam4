@@ -6,4 +6,5 @@ public abstract class AiBaseState
 {
     public abstract void EnterState(AiStateManager ai);
     public abstract void UpdateState(AiStateManager ai);
+
 }
