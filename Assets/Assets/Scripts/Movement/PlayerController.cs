@@ -3,10 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour 
 {
     #region BackingFields
-
     [Header("Sensibility")]
     [SerializeField]
     private float m_sentibilityVertical = 1;
@@ -54,7 +53,7 @@ public class PlayerController : MonoBehaviour
     private Quaternion targetRotation;
 
     private CameraManager Camera;
-
+    
     public float MoveUpwards { get => Input.GetAxisRaw("Fly") * m_upAndDownSpeed; private set => MoveUpwards = value; }
     public float MoveSideWays { get => Input.GetAxisRaw("Horizontal") * m_slideSpeed; private set => MoveSideWays = value; }
     public float MoveForward { get => Input.GetAxisRaw("Vertical") * m_forwardSpeed; private set => MoveSideWays = value; }
@@ -177,6 +176,5 @@ public class PlayerController : MonoBehaviour
         }
 
     }
-
     #endregion
 }
