@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SreenLook : MonoBehaviour
+public class ScreenLook : MonoBehaviour
 {
     private void Awake()
     {

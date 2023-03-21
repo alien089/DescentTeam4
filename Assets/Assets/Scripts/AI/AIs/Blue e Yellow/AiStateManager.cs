@@ -3,7 +3,8 @@ using UnityEngine;
 
 #pragma warning disable IDE0052
 
-public class AiStateManager : MonoBehaviour
+[RequireComponent(typeof(TimerComponent))]
+public class AiStateManager : EnemyController
 {
     [Serializable]
     private struct HeaderSpace
@@ -55,6 +56,16 @@ public class AiStateManager : MonoBehaviour
     [field: SerializeField]
     public float RadiusSpeed { get; set; }
 
+    [Header("Weapon Data")]
+    public Transform[] SpawnPoints = new Transform[2];
+    public GameObject EnemyProjectile;
+    public int EnemyAmmoSetupCount;
+    private readonly int EnemyAmmoCost = 0;
+    public float EnemyDeelay;
+    private TimerComponent m_Timer;
+
+    public  PrimaryWeapon EnemyWeapon { get; set; }
+
     #endregion
 
     #region Property not in editor
@@ -85,6 +96,8 @@ public class AiStateManager : MonoBehaviour
     private void Awake()
     {
         Body = GetComponent<Rigidbody>();
+        m_Timer = GetComponent<TimerComponent>();
+        EnemyWeapon = new Laser(SpawnPoints[0], SpawnPoints[1], EnemyAmmoSetupCount, EnemyAmmoCost,  EnemyProjectile, EnemyDeelay, m_Timer);
     }
 
     void Start()
@@ -96,7 +109,6 @@ public class AiStateManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         if (FOV.AiCanSee)
         {
             if (Distance > MaxRange)
@@ -108,9 +120,6 @@ public class AiStateManager : MonoBehaviour
         {
             Current = SearchState;
         }
-
         Current.UpdateState(this);
-
     }
-
 }

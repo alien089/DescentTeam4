@@ -8,7 +8,7 @@ public class EnemyController : MonoBehaviour, IDamageable, IEnemy
 {
     public int Health = 5;
 
-    private void Update()
+    private void FixedUpdate()
     {
         LifeCheck();
     }
@@ -36,7 +36,7 @@ public class EnemyController : MonoBehaviour, IDamageable, IEnemy
         gameObject.layer = 0;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    protected void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.TryGetComponent<IBullet>(out IBullet bullet))
         {
