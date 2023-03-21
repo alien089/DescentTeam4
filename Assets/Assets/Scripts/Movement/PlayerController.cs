@@ -3,10 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour
 {
     #region BackingFields
-
     [Header("Sensibility")]
     [SerializeField]
     private float m_sentibilityVertical = 1;
