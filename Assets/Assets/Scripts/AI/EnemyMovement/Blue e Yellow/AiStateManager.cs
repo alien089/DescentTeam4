@@ -110,8 +110,6 @@ public class AiStateManager : MonoBehaviour
         }
 
         Current.UpdateState(this);
-        print(Current);
-        print(IsSpawned);
 
     }
 

@@ -2588,7 +2588,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3965409220218956402, guid: 47462837946c72848a7a6e307375ea43, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 18.04
+      value: 1.52
       objectReference: {fileID: 0}
     - target: {fileID: 3965409220218956402, guid: 47462837946c72848a7a6e307375ea43, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2619,6 +2619,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3965409220218956406, guid: 47462837946c72848a7a6e307375ea43, type: 3}
+      propertyPath: m_angle
+      value: 360
+      objectReference: {fileID: 0}
+    - target: {fileID: 3965409220218956406, guid: 47462837946c72848a7a6e307375ea43, type: 3}
       propertyPath: m_player
       value: 
       objectReference: {fileID: 1265327093}
@@ -2630,5 +2634,6 @@ PrefabInstance:
       propertyPath: <Player>k__BackingField
       value: 
       objectReference: {fileID: 1265327093}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1932644906, guid: 47462837946c72848a7a6e307375ea43, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 47462837946c72848a7a6e307375ea43, type: 3}
