@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class UIStuff : MonoBehaviour
 {
-    public ShootingManager weaponScript;
+    public PlayerShooting weaponScript;
     public Text weapon1;
     public Text Ammo1;
     public Text weapon2;

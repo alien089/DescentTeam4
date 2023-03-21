@@ -22,7 +22,7 @@ public class Bobbing : MonoBehaviour
     #region Field
 
     private Vector3 m_startingPosition;
-    private PlayerController Player;
+    private PlayerMovement Player;
     private bool m_isMoving;
     private Rigidbody m_rigidBody;
 
@@ -30,7 +30,7 @@ public class Bobbing : MonoBehaviour
 
     private void Start()
     {
-        TryGetComponent<PlayerController>(out Player);
+        TryGetComponent<PlayerMovement>(out Player);
         TryGetComponent<Rigidbody>(out m_rigidBody);
 
         m_isMoving = Player.IsMoving;
@@ -39,21 +39,31 @@ public class Bobbing : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (m_CasePlayer)
+            FixedPlayerBobbing();
+        else
+            FixedEnemyBobbing();
+    }
+
+    private void FixedPlayerBobbing()
+    {
         m_isMoving = Player.IsMoving;
         float bobbing = Mathf.Sin(Time.time * m_bobbingSpeed) * m_bobbingPower;
-        
-        Vector3 bobbingForce = new Vector3(0f, bobbing, 0f);
-        if (m_CasePlayer)
-        {
-            if (m_isMoving == false)
-            {
 
-                m_rigidBody.AddForce(bobbingForce, ForceMode.Force);
-            }
-        }
-        if (m_CaseAI)
+        Vector3 bobbingForce = new Vector3(0f, bobbing, 0f);
+        if (m_isMoving == false)
         {
+
             m_rigidBody.AddForce(bobbingForce, ForceMode.Force);
         }
+    }
+
+    private void FixedEnemyBobbing()
+    {
+        float bobbing = Mathf.Sin(Time.time * m_bobbingSpeed) * m_bobbingPower;
+
+        Vector3 bobbingForce = new Vector3(0f, bobbing, 0f);
+
+        m_rigidBody.AddForce(bobbingForce, ForceMode.Force);
     }
 }

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour 
+public class PlayerMovement : MonoBehaviour 
 {
     #region BackingFields
     [Header("Sensibility")]

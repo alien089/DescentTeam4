@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class ShootingManager : MonoBehaviour, IPlayer
+public class PlayerShooting : MonoBehaviour
 {
     public Transform RightWeapon;
     public Transform LeftWeapon;
