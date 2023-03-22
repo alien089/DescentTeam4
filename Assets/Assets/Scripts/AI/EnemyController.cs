@@ -8,11 +8,6 @@ public class EnemyController : MonoBehaviour, IDamageable, IEnemy
 {
     public int Health = 5;
 
-    private void FixedUpdate()
-    {
-        LifeCheck();
-    }
-
     public void LifeCheck()
     {
         if (Health <= 0)
@@ -40,8 +35,11 @@ public class EnemyController : MonoBehaviour, IDamageable, IEnemy
     {
         if (collision.gameObject.TryGetComponent<IBullet>(out IBullet bullet))
         {
-            if(collision.gameObject.GetComponent<GenericProjectile>().IsPlayer)
+            if (collision.gameObject.GetComponent<GenericProjectile>().IsPlayer)
+            {
                 Damage(collision.gameObject.GetComponent<GenericProjectile>().Damage);
+                LifeCheck();
+            }
         }
     }
 }

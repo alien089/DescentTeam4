@@ -45,7 +45,7 @@ public class UIStuff : MonoBehaviour
             weapon2.text = "Homing missile";
             Ammo2.text = weaponScript.m_SecondaryList[1].AmmoCount.ToString();
         }
-
+        //
         CheckDeath();
         CheckGameOver();
     }

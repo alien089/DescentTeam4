@@ -3,25 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class StageManager : MonoBehaviour
+public class StageManager : Singleton<StageManager>
 {
-    public static StageManager instance;
-
-    private int m_PlayerLives = 3;
+    public int m_PlayerLives = 3;
     public PlayerStates PlayerState = PlayerStates.LIVE;
     private int m_Score = 0;
 
     public Transform SpawnPointPlayer;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        if (instance == null)
-            if (!TryGetComponent<StageManager>(out instance))
-                instance = gameObject.AddComponent<StageManager>();
-            else
-                Destroy(gameObject);
-    }
 
     public void Death()
     {
@@ -45,7 +33,7 @@ public class StageManager : MonoBehaviour
         }
         else
         {
-            SceneManager.LoadScene("MainMenu");
+            SceneManager.LoadScene("MenuScene");
         }
     }
 
