@@ -8,6 +8,7 @@ public class StageManager : Singleton<StageManager>
     public int m_PlayerLives = 3;
     public PlayerStates PlayerState = PlayerStates.LIVE;
     private int m_Score = 0;
+    public bool BossDead = false;
 
     public Transform SpawnPointPlayer;
 
@@ -28,6 +29,7 @@ public class StageManager : Singleton<StageManager>
         if (m_PlayerLives > 0)
         {
             player.transform.position = SpawnPointPlayer.transform.position;
+            player.GetComponent<PlayerStats>().Shield = player.GetComponent<PlayerStats>().MaxShield;
             PlayerState = PlayerStates.LIVE;
             Time.timeScale = 1;
         }

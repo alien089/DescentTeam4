@@ -99,6 +99,10 @@ public class ReactorController : EnemyController
         return false;
     }
 
+    private void OnDestroy()
+    {
+        StageManager.instance.BossDead = true;
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.transform.TryGetComponent<IPlayer>(out IPlayer component))
