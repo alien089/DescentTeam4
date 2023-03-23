@@ -7,6 +7,7 @@ TagManager:
   - baseProjectile
   - Enemy
   - searchProjectile
+  - KeyCard1
   layers:
   - Default
   - TransparentFX
@@ -14,12 +15,12 @@ TagManager:
   - InVIew
   - Water
   - UI
+  - projectile
   - 
   - 
   - 
-  - 
-  - 
-  - 
+  - Obstacle
+  - Player
   - 
   - 
   - 
