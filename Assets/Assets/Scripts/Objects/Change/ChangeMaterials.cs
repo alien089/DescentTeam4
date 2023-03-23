@@ -52,7 +52,7 @@ public class ChangeMaterials : MonoBehaviour, IDamageable
     {
         if(m_CurrentHealth <= 0)
         {
-            Destroy(this);
+            Destroy(gameObject);
         }
     }
 
