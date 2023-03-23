@@ -176,7 +176,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_angle: 360
-  m_range: 10
+  m_range: 200
   m_target:
     serializedVersion: 2
     m_Bits: 2048
@@ -208,9 +208,9 @@ MonoBehaviour:
   <WanderMovingSpeed>k__BackingField: 10
   m_attackState:
     <Description>k__BackingField: A set of values for AttackState functions
-  <MaxRange>k__BackingField: 4
-  <RotationSpeed>k__BackingField: 200
-  <Radius>k__BackingField: 3
+  <MaxRange>k__BackingField: 10
+  <RotationSpeed>k__BackingField: 10
+  <Radius>k__BackingField: 10
   <RadiusSpeed>k__BackingField: 2
   m_shooting:
     <Description>k__BackingField: A set of values for shooting settings

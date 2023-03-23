@@ -157,6 +157,7 @@ GameObject:
   - component: {fileID: 7816036183268303874}
   - component: {fileID: 7816036183264800569}
   - component: {fileID: 7816036183264800568}
+  - component: {fileID: 4147335053093765918}
   - component: {fileID: 1503185047}
   m_Layer: 11
   m_Name: prfb_player
@@ -215,10 +216,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxShield: 3
   Shield: 0
-  EnergyAmmoCount: 100
-  VulcanAmmoCount: 2500
-  ConcussionAmmoCount: 6
-  HomingAmmoCount: 6
 --- !u!114 &8308445583880759535
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -330,6 +327,18 @@ MonoBehaviour:
   m_bobbingPower: 2
   m_CasePlayer: 1
   m_CaseAI: 0
+--- !u!114 &4147335053093765918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8308445583880759528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25e72d5f3394f5249b4e21abe13f1787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!135 &1503185047
 SphereCollider:
   m_ObjectHideFlags: 0
