@@ -12,4 +12,8 @@ public class GreenSpawnState : GreenAiBaseState
     {
 
     }
+    public override void OnTriggerEnter(GreenAiManager ai, Collider other)
+    {
+
+    }
 }

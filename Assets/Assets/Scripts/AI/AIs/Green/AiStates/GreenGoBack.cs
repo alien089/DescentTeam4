@@ -17,4 +17,8 @@ public class GreenGoBack : GreenAiBaseState
             ai.SwitchState(ai.SpawnState);
         }
     }
+    public override void OnTriggerEnter(GreenAiManager ai, Collider other)
+    {
+
+    }
 }

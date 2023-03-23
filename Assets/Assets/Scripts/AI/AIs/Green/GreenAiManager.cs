@@ -3,7 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GreenAiManager : MonoBehaviour
+[RequireComponent(typeof(TimerComponent))]
+public class GreenAiManager : EnemyController
 {
     [Serializable]
     private struct HeaderSpace
@@ -24,6 +25,9 @@ public class GreenAiManager : MonoBehaviour
     [field: SerializeField]
     public Rigidbody Body;
 
+    [field: SerializeField]
+    public GameObject Player { get; set; }
+
 
     [Space(15)]
     [SerializeField]
@@ -42,7 +46,7 @@ public class GreenAiManager : MonoBehaviour
 
     #endregion
 
-    public GameObject Player { get; set; }
+
     public FOV FOV { get; set; }
     public Vector3 InitialPos { get; set; }
     public TimerComponent Timer { get; set; }
@@ -65,10 +69,12 @@ public class GreenAiManager : MonoBehaviour
     }
     private void Start()
     {
+        FOV = GetComponent<FOV>();
         InitialPos = transform.position;
         Current = SpawnState;
         Current.EnterState(this);
     }
+
     private void Update()
     {
         Current.UpdateState(this);
@@ -81,10 +87,14 @@ public class GreenAiManager : MonoBehaviour
             Current = GoBack;
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Current.OnTriggerEnter(this, other);
+    }
     public void SwitchState(GreenAiBaseState state)
     {
         Current = state;
         state.EnterState(this);
     }
-
 }
