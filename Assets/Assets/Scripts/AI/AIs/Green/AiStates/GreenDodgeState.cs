@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GreenDodgeState : GreenAiBaseState
 {
+
     public override void EnterState(GreenAiManager ai)
     {
 
@@ -11,15 +12,26 @@ public class GreenDodgeState : GreenAiBaseState
     public override void UpdateState(GreenAiManager ai)
     {
         ai.transform.LookAt(ai.Player.transform);
-        ai.Body.AddForce(Random.onUnitSphere * ai.Speed);
-        //if (true)
-        //{
-        //    ai.StartCoroutine(MoveRandomDistance(ai));
-        //}
+
+        #region ImpossibleMode
+        //ai.Body.AddForce(Random.onUnitSphere * ai.Speed * 10);
+        #endregion
+        
+        ai.EnemyWeapon.Shoot();
+
     }
-    private IEnumerator MoveRandomDistance(GreenAiManager ai)
+    public override void OnTriggerEnter(GreenAiManager ai, Collider other)
     {
-        yield return new WaitForFixedUpdate();
-        ai.Body.AddForce(Random.onUnitSphere * ai.Speed);
+        //if (other.gameObject.layer == 6)
+        //{
+        //    ai.Body.AddForce(Random.onUnitSphere * ai.Speed * 100);
+        //    Debug.Log("CIAO1");
+        //}
+        if (other.gameObject.tag == "baseProjectile")
+        {
+            ai.Body.AddForce(Random.onUnitSphere * ai.Speed * 100);
+            Debug.Log("CIAO2");
+        }
     }
+
 }
