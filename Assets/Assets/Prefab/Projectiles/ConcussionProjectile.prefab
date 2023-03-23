@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8680182040554673899}
   - component: {fileID: -6356952947653434985}
   - component: {fileID: 3938309633484639181}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ConcussionProjectile
   m_TagString: baseProjectile
   m_Icon: {fileID: 0}
@@ -61,8 +61,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f67832157b5002746ba1364267b964b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 3
-  Speed: 10
+  Damage: 125
+  Speed: 15
   IsPlayer: 1
 --- !u!1001 &621083657881225140
 PrefabInstance:
@@ -71,9 +71,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8680182040554673899}
     m_Modifications:
+    - target: {fileID: 447820951338196499, guid: fd7bd5f8a90fea2428f41fdd807ea56e, type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2671556888935372106, guid: fd7bd5f8a90fea2428f41fdd807ea56e, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4580972459655713189, guid: fd7bd5f8a90fea2428f41fdd807ea56e, type: 3}
       propertyPath: m_Name
       value: prfb_misc_concussion_missile
+      objectReference: {fileID: 0}
+    - target: {fileID: 4580972459655713189, guid: fd7bd5f8a90fea2428f41fdd807ea56e, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8012719854096346060, guid: fd7bd5f8a90fea2428f41fdd807ea56e, type: 3}
       propertyPath: m_RootOrder

@@ -116,7 +116,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8665600859354155476}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -128,7 +128,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f40c19ed1ee50ca4e81e3ca441dafe2d, type: 2}
+  - {fileID: 10650, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -159,7 +159,7 @@ BoxCollider:
   m_GameObject: {fileID: 8665600859354155476}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -196,7 +196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92c914bf26261f64192121831b9fb332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 5
+  Health: 100
   m_playerStats:
     <Description>k__BackingField: A set of values for basic functions
   <Speed>k__BackingField: 3
@@ -287,7 +287,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1d2c0db2d04afd044908d70edbb3b59b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0
+      value: 0.344
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1d2c0db2d04afd044908d70edbb3b59b, type: 3}
       propertyPath: m_LocalRotation.w
