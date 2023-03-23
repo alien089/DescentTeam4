@@ -2,17 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GreenSpawnState : MonoBehaviour
+public class GreenSpawnState : GreenAiBaseState
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void EnterState(GreenAiManager ai)
     {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    }
+    public override void UpdateState(GreenAiManager ai)
     {
-        
+
     }
 }

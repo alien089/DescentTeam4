@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : MonoBehaviour 
 {
 
@@ -78,6 +79,7 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         _rigidBody.freezeRotation = true;
+        _rigidBody.drag = 3;
     }
     private void FixedUpdate()
     {
