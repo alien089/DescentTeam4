@@ -2,17 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GreenDodgeState : MonoBehaviour
+public class GreenDodgeState : GreenAiBaseState
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void EnterState(GreenAiManager ai)
     {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    }
+    public override void UpdateState(GreenAiManager ai)
     {
-        
+        ai.transform.LookAt(ai.Player.transform);
+        ai.Body.AddForce(Random.onUnitSphere * ai.Speed);
+        //if (true)
+        //{
+        //    ai.StartCoroutine(MoveRandomDistance(ai));
+        //}
+    }
+    private IEnumerator MoveRandomDistance(GreenAiManager ai)
+    {
+        yield return new WaitForFixedUpdate();
+        ai.Body.AddForce(Random.onUnitSphere * ai.Speed);
     }
 }

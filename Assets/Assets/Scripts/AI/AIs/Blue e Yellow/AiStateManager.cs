@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 #pragma warning disable IDE0052
@@ -56,15 +57,27 @@ public class AiStateManager : EnemyController
     [field: SerializeField]
     public float RadiusSpeed { get; set; }
 
-    [Header("Weapon Data")]
-    public Transform[] SpawnPoints = new Transform[2];
-    public GameObject EnemyProjectile;
-    public int EnemyAmmoSetupCount;
-    private readonly int EnemyAmmoCost = 0;
-    public float EnemyDeelay;
-    private TimerComponent m_Timer;
+    [Space(15)]
+    [SerializeField]
+    private HeaderSpace m_shooting = new HeaderSpace() { Description = "A set of values for shooting settings" };
 
-    public  PrimaryWeapon EnemyWeapon { get; set; }
+    [field: SerializeField]
+    public Transform[] SpawnPoints { get; set; }  = new Transform[2];
+
+    [field: SerializeField]
+    public GameObject EnemyProjectile { get; set; }
+
+    [field: SerializeField]
+    public float EnemyDeelay { get; set; }
+
+    [Space(5)]
+    [SerializeField]
+    private HeaderSpace NotWorking = new HeaderSpace() { Description = "in progress" };
+    [field: SerializeField]
+    public float BurstTime { get; set; }
+
+    [field: SerializeField]
+    public float TimeBetweeenBursts { get; set; }
 
     #endregion
 
@@ -73,6 +86,12 @@ public class AiStateManager : EnemyController
     public Rigidbody Body { get; set; }
     public FOV FOV { get; set; }
     public bool IsSpawned { get; set; }
+    public TimerComponent Timer { get; set; }
+    public int EnemyAmmoSetupCount { get; set; }
+    public PrimaryWeapon EnemyWeapon { get; set; }
+    public bool CanShoot { get; set; } = true;
+
+    private readonly int EnemyAmmoCost = 0;
 
     public AiBaseState Current
     {
@@ -96,8 +115,8 @@ public class AiStateManager : EnemyController
     private void Awake()
     {
         Body = GetComponent<Rigidbody>();
-        m_Timer = GetComponent<TimerComponent>();
-        EnemyWeapon = new Laser(SpawnPoints[0], SpawnPoints[1], EnemyAmmoSetupCount, EnemyAmmoCost,  EnemyProjectile, EnemyDeelay, m_Timer);
+        Timer = GetComponent<TimerComponent>();
+        EnemyWeapon = new Laser(SpawnPoints[0], SpawnPoints[1], EnemyAmmoSetupCount, EnemyAmmoCost,  EnemyProjectile, EnemyDeelay, Timer);
     }
 
     void Start()
@@ -123,3 +142,4 @@ public class AiStateManager : EnemyController
         Current.UpdateState(this);
     }
 }
+
