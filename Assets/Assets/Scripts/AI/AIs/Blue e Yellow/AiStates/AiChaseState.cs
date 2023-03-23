@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class AiChaseState : AiBaseState
 {
-
-
     public override void EnterState(AiStateManager ai)
     {
 

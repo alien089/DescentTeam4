@@ -6,4 +6,5 @@ public abstract class GreenAiBaseState
 {
     public abstract void EnterState(GreenAiManager ai);
     public abstract void UpdateState(GreenAiManager ai);
+    public abstract void OnTriggerEnter(GreenAiManager ai, Collider other);
 }

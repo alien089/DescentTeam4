@@ -9,7 +9,6 @@ public class FOV : MonoBehaviour
     [SerializeField]
     [Range(0f,360f)]
     private float m_angle;
-
     [SerializeField]
     private float m_range;
     [SerializeField]
