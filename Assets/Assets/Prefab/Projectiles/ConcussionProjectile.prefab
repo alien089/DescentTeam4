@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 8680182040554673899}
   - component: {fileID: -6356952947653434985}
   - component: {fileID: 3938309633484639181}
-  m_Layer: 0
+  - component: {fileID: 8937772185459464426}
+  m_Layer: 6
   m_Name: ConcussionProjectile
   m_TagString: baseProjectile
   m_Icon: {fileID: 0}
@@ -61,9 +62,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f67832157b5002746ba1364267b964b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 3
-  Speed: 10
+  Damage: 125
+  Speed: 20
   IsPlayer: 1
+--- !u!114 &8937772185459464426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5117200529552386246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40c8ef25c870da34491068e5ff33a3a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_effect: {fileID: 6862319176077118502, guid: eb4b845c63afd254fa4e96bc5b0b2d2a, type: 3}
 --- !u!1001 &621083657881225140
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -71,9 +85,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8680182040554673899}
     m_Modifications:
+    - target: {fileID: 447820951338196499, guid: fd7bd5f8a90fea2428f41fdd807ea56e, type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2671556888935372106, guid: fd7bd5f8a90fea2428f41fdd807ea56e, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4580972459655713189, guid: fd7bd5f8a90fea2428f41fdd807ea56e, type: 3}
       propertyPath: m_Name
       value: prfb_misc_concussion_missile
+      objectReference: {fileID: 0}
+    - target: {fileID: 4580972459655713189, guid: fd7bd5f8a90fea2428f41fdd807ea56e, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8012719854096346060, guid: fd7bd5f8a90fea2428f41fdd807ea56e, type: 3}
       propertyPath: m_RootOrder

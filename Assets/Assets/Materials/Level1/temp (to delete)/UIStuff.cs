@@ -7,10 +7,14 @@ using UnityEngine.UI;
 public class UIStuff : MonoBehaviour
 {
     public PlayerShooting weaponScript;
+    public PlayerStats stats;
+
     public Text weapon1;
     public Text Ammo1;
     public Text weapon2;
     public Text Ammo2;
+
+    public Text Shield;
 
     public Text Death;
     public Text GameOver;
@@ -45,6 +49,7 @@ public class UIStuff : MonoBehaviour
             weapon2.text = "Homing missile";
             Ammo2.text = weaponScript.m_SecondaryList[1].AmmoCount.ToString();
         }
+        Shield.text = stats.Shield.ToString();
         //
         CheckDeath();
         CheckGameOver();
