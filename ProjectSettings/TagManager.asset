@@ -3,20 +3,24 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - baseProjectile
+  - Enemy
+  - searchProjectile
+  - KeyCard1
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - InVIew
   - Water
   - UI
+  - projectile
   - 
   - 
   - 
-  - 
-  - 
-  - 
+  - Obstacle
+  - Player
   - 
   - 
   - 
