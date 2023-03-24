@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1597451582349998624}
   - component: {fileID: 5303809527351168348}
   - component: {fileID: 6411672234615514886}
+  - component: {fileID: -948109289552891449}
   m_Layer: 6
   m_Name: GreenEnemyProjectile
   m_TagString: baseProjectile
@@ -64,6 +65,19 @@ MonoBehaviour:
   Damage: 3
   Speed: 10
   IsPlayer: 0
+--- !u!114 &-948109289552891449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2980970183730840589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40c8ef25c870da34491068e5ff33a3a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_effect: {fileID: 6862319176077118502, guid: eb4b845c63afd254fa4e96bc5b0b2d2a, type: 3}
 --- !u!1 &8952299990324505627
 GameObject:
   m_ObjectHideFlags: 0

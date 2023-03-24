@@ -165,6 +165,7 @@ GameObject:
   - component: {fileID: 4667555752413177605}
   - component: {fileID: 5261492181055379332}
   - component: {fileID: 4318436258458041144}
+  - component: {fileID: 2617353265124653872}
   m_Layer: 0
   m_Name: Reactor
   m_TagString: Untagged
@@ -306,6 +307,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanShoot: 1
+--- !u!114 &2617353265124653872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6699713552316432344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40c8ef25c870da34491068e5ff33a3a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_effect: {fileID: 6862319176077118502, guid: 95f54bee3e525d1469fbc24d3877c561, type: 3}
 --- !u!1 &7762469822024509216
 GameObject:
   m_ObjectHideFlags: 0

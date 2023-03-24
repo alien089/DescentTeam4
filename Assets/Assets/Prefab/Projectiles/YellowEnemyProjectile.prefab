@@ -107,6 +107,7 @@ GameObject:
   - component: {fileID: 5902296331902034858}
   - component: {fileID: 1033726025816511702}
   - component: {fileID: 2249749296066461324}
+  - component: {fileID: 3663495986920801553}
   m_Layer: 6
   m_Name: YellowEnemyProjectile
   m_TagString: baseProjectile
@@ -160,3 +161,16 @@ MonoBehaviour:
   Damage: 2
   Speed: 10
   IsPlayer: 0
+--- !u!114 &3663495986920801553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7970503187810033031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40c8ef25c870da34491068e5ff33a3a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_effect: {fileID: 6862319176077118502, guid: eb4b845c63afd254fa4e96bc5b0b2d2a, type: 3}

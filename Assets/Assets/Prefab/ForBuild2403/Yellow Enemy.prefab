@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 2535333319412447695}
   - component: {fileID: 9164330539854925232}
   - component: {fileID: 2243415955045588202}
+  - component: {fileID: 9191084729313186003}
   m_Layer: 0
   m_Name: Yellow Enemy
   m_TagString: Enemy
@@ -131,11 +132,11 @@ MonoBehaviour:
     <Description>k__BackingField: A set of values for SearchState functions
   <TimeToMove>k__BackingField: 5
   <MovingTime>k__BackingField: 3
-  <WanderMovingSpeed>k__BackingField: 10
+  <WanderMovingSpeed>k__BackingField: 0
   m_attackState:
     <Description>k__BackingField: A set of values for AttackState functions
-  <MaxRange>k__BackingField: 10
-  <RotationSpeed>k__BackingField: 10
+  <MaxRange>k__BackingField: 5
+  <RotationSpeed>k__BackingField: 25
   <Radius>k__BackingField: 5
   <RadiusSpeed>k__BackingField: 2
   m_shooting:
@@ -192,6 +193,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _probabilityOfDrop: 0
   _drop: {fileID: 0}
+--- !u!114 &9191084729313186003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2535333319412447684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40c8ef25c870da34491068e5ff33a3a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_effect: {fileID: 6862319176077118502, guid: 95f54bee3e525d1469fbc24d3877c561, type: 3}
 --- !u!1 &7253003153968008341
 GameObject:
   m_ObjectHideFlags: 0
