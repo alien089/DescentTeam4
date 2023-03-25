@@ -7,13 +7,15 @@ public class ScreenLook : MonoBehaviour
     [SerializeField]
     private KeyCode m_keyForCursor = KeyCode.T;
 
-    private void Awake()
-    {
-        DontDestroyOnLoad(this.gameObject);
-    }
     private void Update()
     {
         HoldKeyForCursor();
+    }
+
+    private void OnDestroy()
+    {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Confined;
     }
 
     /// <summary>

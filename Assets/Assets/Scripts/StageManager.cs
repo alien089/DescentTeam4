@@ -35,9 +35,10 @@ public class StageManager : Singleton<StageManager>
         }
         else
         {
+            Time.timeScale = 1;
             SceneManager.LoadScene("MenuScene");
         }
-    }
+    }    
 
     public enum PlayerStates
     {

@@ -14,6 +14,7 @@ public class PlayerStats : MonoBehaviour, IDamageable, IPlayer
 
     public int MaxShield;
     public int Shield;
+    public KeyCode RespawnKey = KeyCode.Space;
 
     private void Start()
     {
@@ -32,7 +33,7 @@ public class PlayerStats : MonoBehaviour, IDamageable, IPlayer
     {
         if(Shield <= 0)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(RespawnKey))
             {
                 StageManager.instance.Respawn(gameObject);
             }
