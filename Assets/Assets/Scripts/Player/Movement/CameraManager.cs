@@ -67,7 +67,7 @@ public class CameraManager : MonoBehaviour
 
         //BlockMovement();
 
-        if (m_currentCamerea != m_rearCamera)
+        if (m_currentCamerea != m_rearCamera && StageManager.instance.PlayerState == StageManager.PlayerStates.LIVE)
         {
             float xmouse = Input.GetAxis("Mouse X");
             m_currentCamerea.transform.rotation = Quaternion.Euler(new Vector3(transform.eulerAngles.x, transform.eulerAngles.y,
