@@ -23,7 +23,7 @@ public class ScreenLook : MonoBehaviour
     /// </summary>
     public void HoldKeyForCursor()
     {
-        if (Input.GetKey(m_keyForCursor))
+        if (Input.GetKey(m_keyForCursor) && Time.timeScale != 0f)
         {
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.Confined;

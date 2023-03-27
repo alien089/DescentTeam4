@@ -12,6 +12,7 @@ public class StageManager : Singleton<StageManager>
 
     public Transform SpawnPointPlayer;
 
+
     public void Death()
     {
         m_PlayerLives--;
@@ -21,7 +22,7 @@ public class StageManager : Singleton<StageManager>
         else
             PlayerState = PlayerStates.GAMEOVER;
 
-        Time.timeScale = 0;
+        Time.timeScale = 0f;
     }
 
     public void Respawn(GameObject player)
@@ -31,11 +32,11 @@ public class StageManager : Singleton<StageManager>
             player.transform.position = SpawnPointPlayer.transform.position;
             player.GetComponent<PlayerStats>().Shield = player.GetComponent<PlayerStats>().MaxShield;
             PlayerState = PlayerStates.LIVE;
-            Time.timeScale = 1;
+            Time.timeScale = 1f;
         }
         else
         {
-            Time.timeScale = 1;
+            Time.timeScale = 1f;
             SceneManager.LoadScene("MenuScene");
         }
     }    
