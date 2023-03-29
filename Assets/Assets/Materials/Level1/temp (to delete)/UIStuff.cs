@@ -31,23 +31,23 @@ public class UIStuff : MonoBehaviour
         if(weaponScript.ActualPrimary == 0)
         {
             weapon1.text = "Laser";
-            Ammo1.text = ((Laser)weaponScript.m_PrimaryList[0]).AmmoCount.ToString();
+            Ammo1.text = ((Laser)weaponScript.PrimaryList[0]).AmmoCount.ToString();
         }
         else
         {
             weapon1.text = "Vulcan";
-            Ammo1.text = weaponScript.m_PrimaryList[1].AmmoCount.ToString();
+            Ammo1.text = weaponScript.PrimaryList[1].AmmoCount.ToString();
         }
 
         if(weaponScript.ActualSecondary == 0)
         {
             weapon2.text = "Concussion missile";
-            Ammo2.text = weaponScript.m_SecondaryList[0].AmmoCount.ToString();
+            Ammo2.text = weaponScript.SecondaryList[0].AmmoCount.ToString();
         }
         else
         {
             weapon2.text = "Homing missile";
-            Ammo2.text = weaponScript.m_SecondaryList[1].AmmoCount.ToString();
+            Ammo2.text = weaponScript.SecondaryList[1].AmmoCount.ToString();
         }
         Shield.text = stats.Shield.ToString();
         //

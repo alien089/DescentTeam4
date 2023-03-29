@@ -42,7 +42,7 @@ public class PlayerShooting : MonoBehaviour
     public int HomingAmmoSetupCount;
     public int HomingAmmoCost;
     public float HomingDeelay;
-
+        
     [Header("Input")]
     public KeyCode PrimaryWeapon = KeyCode.Mouse0;
     public KeyCode SecondaryWeapon = KeyCode.Mouse1;
@@ -52,8 +52,11 @@ public class PlayerShooting : MonoBehaviour
     public KeyCode ChooseFirstSecondary = KeyCode.Alpha6;
     public KeyCode ChooseSecondSecondary = KeyCode.Alpha7;
 
-    public List<PrimaryWeapon> m_PrimaryList = new List<PrimaryWeapon>();
-    public List<SecondaryWeapon> m_SecondaryList = new List<SecondaryWeapon>();
+    [HideInInspector]
+    public bool VulcanEnable = false;
+
+    public List<PrimaryWeapon> PrimaryList = new List<PrimaryWeapon>();
+    public List<SecondaryWeapon> SecondaryList = new List<SecondaryWeapon>();
     private PrimaryWeapon m_FlareWeapon;
 
     private TimerComponent m_Timer;
@@ -62,12 +65,12 @@ public class PlayerShooting : MonoBehaviour
     {
         m_Timer = GetComponent<TimerComponent>();
 
-        m_PrimaryList.Add(new Laser(LeftWeapon, RightWeapon, LaserAmmoSetupCount, LaserAmmoCost, LaserProjectile, LaserDeelay, m_Timer));
-        m_PrimaryList.Add(new Vulcan(CentralWeapon, VulcanAmmoSetupCount, VulcanAmmoCost, VulcanProjectile, VulcanDeelay, m_Timer));
+        PrimaryList.Add(new Laser(LeftWeapon, RightWeapon, LaserAmmoSetupCount, LaserAmmoCost, LaserProjectile, LaserDeelay, m_Timer));
+        PrimaryList.Add(new Vulcan(CentralWeapon, VulcanAmmoSetupCount, VulcanAmmoCost, VulcanProjectile, VulcanDeelay, m_Timer));
         m_FlareWeapon = new Flare(CentralWeapon, FlareAmmoSetupCount, FlareAmmoCost, FlareProjectile, FlareDeelay, m_Timer);
 
-        m_SecondaryList.Add(new ConcussionMissile(LeftWeapon, RightWeapon, ConcussionAmmoSetupCount, ConcussionAmmoCost, ConcussionProjectile, ConcussionDeelay));
-        m_SecondaryList.Add(new HomingMissile(LeftWeapon, RightWeapon, HomingAmmoSetupCount, HomingAmmoCost, HomingProjectile, HomingDeelay));
+        SecondaryList.Add(new ConcussionMissile(LeftWeapon, RightWeapon, ConcussionAmmoSetupCount, ConcussionAmmoCost, ConcussionProjectile, ConcussionDeelay));
+        SecondaryList.Add(new HomingMissile(LeftWeapon, RightWeapon, HomingAmmoSetupCount, HomingAmmoCost, HomingProjectile, HomingDeelay));
         
     }
 
@@ -85,7 +88,7 @@ public class PlayerShooting : MonoBehaviour
     {
         if (Input.GetKey(PrimaryWeapon))
         {
-            PrimaryWeapon weapon = m_PrimaryList[ActualPrimary];
+            PrimaryWeapon weapon = PrimaryList[ActualPrimary];
             weapon.Shoot();
         }
     }
@@ -94,7 +97,7 @@ public class PlayerShooting : MonoBehaviour
     {
         if (Input.GetKeyDown(SecondaryWeapon))
         {
-            SecondaryWeapon weapon = m_SecondaryList[ActualSecondary];
+            SecondaryWeapon weapon = SecondaryList[ActualSecondary];
             weapon.Shoot();
         }
     }
@@ -114,8 +117,8 @@ public class PlayerShooting : MonoBehaviour
         {
             ActualPrimary = 0;
         }
-        if (Input.GetKeyDown(ChooseSecondPrimary))
-        {
+        if (Input.GetKeyDown(ChooseSecondPrimary) && VulcanEnable)
+        {   
             ActualPrimary = 1;
         }
     }

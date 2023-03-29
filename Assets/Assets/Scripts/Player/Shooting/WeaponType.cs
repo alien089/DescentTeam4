@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum WeaponType
+public enum PickableType
 {
-    Laser,
+    LaserAmmo,
+    VulcanAmmo,
     Vulcan,
-    ConcussionMissile,
-    HomingMissile
+    ConcussionMissileAmmo,
+    HomingMissileAmmo,
+    Shield,
+    Hostage
 }
