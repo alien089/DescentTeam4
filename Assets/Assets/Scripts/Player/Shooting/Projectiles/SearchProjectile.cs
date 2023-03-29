@@ -28,7 +28,7 @@ public class SearchProjectile : GenericProjectile, IBullet
                 RaycastHit hit;
 
                 Debug.DrawLine(transform.position, enemy.transform.position, Color.red);
-                if (Physics.Linecast(transform.position, enemy.transform.position, out hit, 3 << 3))
+                if (Physics.Linecast(transform.position, enemy.transform.position, out hit))
                 {
                     if (hit.collider.TryGetComponent(out IEnemy enemy1))
                     {
