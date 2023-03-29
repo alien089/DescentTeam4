@@ -21,12 +21,6 @@ public class UIStuff : Singleton<UIStuff>
 
     public Text Notification;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-    
     // Update is called once per frame
     void Update()
     {
