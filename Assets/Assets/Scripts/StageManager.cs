@@ -9,6 +9,7 @@ public class StageManager : Singleton<StageManager>
     public PlayerStates PlayerState = PlayerStates.LIVE;
     private int m_Score = 0;
     public bool BossDead = false;
+    public int HostagesCount = 0;
 
     public Transform SpawnPointPlayer;
 
@@ -31,6 +32,8 @@ public class StageManager : Singleton<StageManager>
         {
             player.transform.position = SpawnPointPlayer.transform.position;
             player.GetComponent<PlayerStats>().Shield = player.GetComponent<PlayerStats>().MaxShield;
+            ((Laser)player.GetComponent<PlayerShooting>().PrimaryList[0]).AmmoCount = 100f;
+            HostagesCount = 0;
             PlayerState = PlayerStates.LIVE;
             Time.timeScale = 1f;
         }
