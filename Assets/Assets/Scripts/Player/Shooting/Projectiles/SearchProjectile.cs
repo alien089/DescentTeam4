@@ -25,7 +25,23 @@ public class SearchProjectile : GenericProjectile, IBullet
         {
             if (enemy.layer == 3)
             {
-                inViewEnemies.Add(enemy);
+                RaycastHit hit;
+
+                Debug.DrawLine(transform.position, enemy.transform.position, Color.red);
+                if (Physics.Linecast(transform.position, enemy.transform.position, out hit))
+                {
+                    if (hit.collider.TryGetComponent(out IEnemy enemy1))
+                    {
+                        inViewEnemies.Add(enemy);
+                    }
+                }
+
+                //if(Physics.Linecast(transform.position, enemy.transform.position, out hit))
+                //{
+                //    if (hit.collider.TryGetComponent(out IEnemy enemy1))
+                //        inViewEnemies.Add(enemy);
+                //}
+                //inViewEnemies.Add(enemy);
             }
         }
 
