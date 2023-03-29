@@ -12,4 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 086e7c51d3596a0479fb187799fbfdda, type: 3}
   m_Name: test
   m_EditorClassIdentifier: 
-  SpawnPoints: []
+  Projectile: {fileID: 0}
+  AmmoSetupCount: 0
+  AmmoCost: 0
+  Deelay: 0
+  Type: 0

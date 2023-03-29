@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIStuff : MonoBehaviour
+public class UIStuff : Singleton<UIStuff>
 {
     public PlayerShooting weaponScript;
     public PlayerStats stats;
@@ -18,6 +18,8 @@ public class UIStuff : MonoBehaviour
 
     public Text Death;
     public Text GameOver;
+
+    public Text Notification;
 
     // Start is called before the first frame update
     void Start()
