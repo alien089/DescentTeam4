@@ -105,7 +105,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1543763775935499365}
-  - component: {fileID: 48757189725602526}
   - component: {fileID: 6307042153963663724}
   - component: {fileID: 5827537481003866349}
   m_Layer: 0
@@ -134,21 +133,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!114 &48757189725602526
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2172806865429206751}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8259dbf448940e49a54e8eec4bc8f38, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_doorAnimation: {fileID: 0}
-  m_nameRequiredDoorBool: 
-  m_timeToClose: 0
 --- !u!65 &6307042153963663724
 BoxCollider:
   m_ObjectHideFlags: 0

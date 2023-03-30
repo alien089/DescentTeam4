@@ -144,7 +144,7 @@ MonoBehaviour:
   <SpawnPoints>k__BackingField:
   - {fileID: 5132036037984738807}
   - {fileID: 1087326313821420166}
-  <EnemyProjectile>k__BackingField: {fileID: 7970503187810033031, guid: d5a859757aa5fb34aa0bb6f795c6abb3, type: 3}
+  <EnemyProjectile>k__BackingField: {fileID: 2168060453619676191, guid: 21f63eb9126a88c448c7e7992065e84d, type: 3}
   <EnemyDeelay>k__BackingField: 1
   NotWorking:
     <Description>k__BackingField: in progress
