@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ScoreObs : MonoBehaviour
+public class ScoreSaver : MonoBehaviour
 {
-    public static ScoreObs Instance;
+    public static ScoreSaver Instance;
 
     [System.Serializable]
-    public struct Obs
+    public struct Sr
     {
         public int ShieldBonus;
         public int EnergyBonus;
@@ -39,7 +39,7 @@ public class ScoreObs : MonoBehaviour
         MyObs.KilledReactor = 0;
     }
 
-    public Obs MyObs;
+    public Sr MyObs;
 
     public void Awake()
     {

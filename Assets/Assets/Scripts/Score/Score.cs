@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -30,7 +31,7 @@ public class Score : MonoBehaviour
     [SerializeField]
     private int maxHostageNumber;
     [SerializeField]
-    private int currentHostageNumber;
+    private int currentHostageNumber;    //=> StageManager.instance.HostagesCount;
     [SerializeField]
     private int _bonusScoreIfAllHostages;
     [SerializeField]
@@ -80,24 +81,26 @@ public class Score : MonoBehaviour
     /// <summary>
     /// Total bonus Stamina score 
     /// </summary>
-    public int StaminaScore => (int)(_pointOnStaminaAccomoulated * Mathf.Round(PlayerShooting.m_PrimaryList[0].AmmoCount));
-
+    public int EnergyScore => (_pointOnStaminaAccomoulated * Convert.ToInt32(((Laser)PlayerShooting.m_PrimaryList[0]).AmmoCount));
     /// <summary>
     /// Total destroy enemies bonus
     /// </summary>
-    public int EnemyDestroyBonus => (_scoreOnDestroyEnemyGreen  * ScoreObs.Instance.MyObs.KilledGreenEnemey) + (_scoreOnDestroyEnemyYellow * ScoreObs.Instance.MyObs.KilledYellowEnemy) + (_scoreOnDestroyEnemyBlue * ScoreObs.Instance.MyObs.KilledBlueEnemy) + (_scoreOnDestroyEnemyReactor * ScoreObs.Instance.MyObs.KilledReactor);
+    public int EnemyDestroyBonus => (_scoreOnDestroyEnemyGreen  * ScoreSaver.Instance.MyObs.KilledGreenEnemey) + (_scoreOnDestroyEnemyYellow * ScoreSaver.Instance.MyObs.KilledYellowEnemy) + (_scoreOnDestroyEnemyBlue * ScoreSaver.Instance.MyObs.KilledBlueEnemy) + (_scoreOnDestroyEnemyReactor * ScoreSaver.Instance.MyObs.KilledReactor);
 
     /// <summary>
     /// Total hostage Bonus
     /// </summary>
     public int TotalHostageBonus => _scoreOnCOllectingHostage + BonusFullHostageScore;
 
+    /// <summary>
+    /// Score to show in during the game
+    /// </summary>
     public int ScoreToShow => EnemyDestroyBonus + TotalHostageBonus + SkillBonus;
 
     /// <summary>
     /// Score after adding everything
     /// </summary>
-    public int TotalScore => ShieldScore + StaminaScore + TotalHostageBonus + EnemyDestroyBonus;
+    public int TotalScore => ShieldScore + EnergyScore + TotalHostageBonus + EnemyDestroyBonus;
 
     /// <summary>
     /// Initializes the <see cref="PlayerStats"/> and <see cref="PlayerShooting"/> fields by getting the corresponding components from the player object <br/> doing <see cref="GetComponent{T}"/>
@@ -109,18 +112,17 @@ public class Score : MonoBehaviour
     private void Update() => SaveData();
 
 
-
     void SaveData()
     {
-        ScoreObs.Instance.MyObs.EnergyBonus = StaminaScore;
-        ScoreObs.Instance.MyObs.ShieldBonus = ShieldScore;
-        ScoreObs.Instance.MyObs.HostageBonus = BonusFullHostageScore;
-        ScoreObs.Instance.MyObs.FullRescueBonus = TotalHostageBonus;
-        ScoreObs.Instance.MyObs.TotalScore = TotalScore;
-        ScoreObs.Instance.MyObs.EnemyPoint = EnemyDestroyBonus;
-        ScoreObs.Instance.MyObs.BluePoint = (_scoreOnDestroyEnemyBlue * ScoreObs.Instance.MyObs.KilledBlueEnemy);
-        ScoreObs.Instance.MyObs.GreenPoint = (_scoreOnDestroyEnemyGreen * ScoreObs.Instance.MyObs.KilledGreenEnemey);
-        ScoreObs.Instance.MyObs.YellowPoint = (_scoreOnDestroyEnemyYellow * ScoreObs.Instance.MyObs.KilledYellowEnemy);
-        ScoreObs.Instance.MyObs.ReactorPoint = (_scoreOnDestroyEnemyReactor * ScoreObs.Instance.MyObs.KilledReactor);
+        ScoreSaver.Instance.MyObs.EnergyBonus = EnergyScore;
+        ScoreSaver.Instance.MyObs.ShieldBonus = ShieldScore;
+        ScoreSaver.Instance.MyObs.HostageBonus = BonusFullHostageScore;
+        ScoreSaver.Instance.MyObs.FullRescueBonus = TotalHostageBonus;
+        ScoreSaver.Instance.MyObs.TotalScore = TotalScore;
+        ScoreSaver.Instance.MyObs.EnemyPoint = EnemyDestroyBonus;
+        ScoreSaver.Instance.MyObs.BluePoint = (_scoreOnDestroyEnemyBlue * ScoreSaver.Instance.MyObs.KilledBlueEnemy);
+        ScoreSaver.Instance.MyObs.GreenPoint = (_scoreOnDestroyEnemyGreen * ScoreSaver.Instance.MyObs.KilledGreenEnemey);
+        ScoreSaver.Instance.MyObs.YellowPoint = (_scoreOnDestroyEnemyYellow * ScoreSaver.Instance.MyObs.KilledYellowEnemy);
+        ScoreSaver.Instance.MyObs.ReactorPoint = (_scoreOnDestroyEnemyReactor * ScoreSaver.Instance.MyObs.KilledReactor);
     }
 }

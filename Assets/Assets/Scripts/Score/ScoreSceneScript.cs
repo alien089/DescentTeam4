@@ -25,11 +25,11 @@ public class ScoreSceneScript : MonoBehaviour
 
     private void Start()
     {
-        _shieldText.text = ScoreObs.Instance.MyObs.ShieldBonus.ToString();
-        _staminaText.text = ScoreObs.Instance.MyObs.EnergyBonus.ToString();
-        _hostageText.text = ScoreObs.Instance.MyObs.HostageBonus.ToString();
-        _skillText.text = ScoreObs.Instance.MyObs.SkillBonus.ToString();
-        _rescueText.text = ScoreObs.Instance.MyObs.FullRescueBonus.ToString();
-        _scoreText.text = ScoreObs.Instance.MyObs.TotalScore.ToString();
+        _shieldText.text = ScoreSaver.Instance.MyObs.ShieldBonus.ToString();
+        _staminaText.text = ScoreSaver.Instance.MyObs.EnergyBonus.ToString();
+        _hostageText.text = ScoreSaver.Instance.MyObs.HostageBonus.ToString();
+        _skillText.text = ScoreSaver.Instance.MyObs.SkillBonus.ToString();
+        _rescueText.text = ScoreSaver.Instance.MyObs.FullRescueBonus.ToString();
+        _scoreText.text = ScoreSaver.Instance.MyObs.TotalScore.ToString();
     }
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 [RequireComponent(typeof(PlayerShooting))]
 public class ChangeRender : MonoBehaviour
@@ -47,12 +48,11 @@ public class ChangeRender : MonoBehaviour
     private Texture _homingMissile;
 
 
-
     private PlayerShooting _weapons;
     private RawImage _image;
     private Texture _currentTexture;
 
-    private void Start() => (_weapons, _image) = (GetComponent<PlayerShooting>(), GetComponent<RawImage>());
+    private void Start() => (_weapons, _image) = (transform.parent.parent.parent.GetComponent<PlayerShooting>(), GetComponent<RawImage>());
 
     void Update()
     {
@@ -75,8 +75,8 @@ public class ChangeRender : MonoBehaviour
             ChangeAmmoText();
             return;
         }
-        _vulcanAmmoCount.text = _weapons.ActualPrimary == 1 ? _weapons.m_PrimaryList[1].AmmoCount.ToString() : string.Empty;
-    }
+        _vulcanAmmoCount.text = _weapons.ActualPrimary == 1 ? ((Vulcan)_weapons.m_PrimaryList[1]).AmmoCount.ToString() : string.Empty;
+    } 
 
     /// <summary>
     /// if primary change string to the name of the current primary weapon else do the same for secondary weapon
