@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 
-[RequireComponent(typeof(PlayerShooting))]
 public class ChangeRender : MonoBehaviour
 {
     [Header("wapon name")]
