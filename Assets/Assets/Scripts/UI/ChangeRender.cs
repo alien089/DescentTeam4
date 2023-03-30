@@ -75,7 +75,7 @@ public class ChangeRender : MonoBehaviour
             ChangeAmmoText();
             return;
         }
-        _vulcanAmmoCount.text = _weapons.ActualPrimary == 1 ? ((Vulcan)_weapons.m_PrimaryList[1]).AmmoCount.ToString() : string.Empty;
+        _vulcanAmmoCount.text = _weapons.ActualPrimary == 1 ? ((Vulcan)_weapons.PrimaryList[1]).AmmoCount.ToString() : string.Empty;
     } 
 
     /// <summary>
@@ -91,7 +91,7 @@ public class ChangeRender : MonoBehaviour
     /// <summary>
     /// Write ammocount of current secondaryWeapon;
     /// </summary>
-    private void ChangeAmmoText() => _secondaryAmmoCount.text = _weapons.ActualSecondary == 0 ? _weapons.m_SecondaryList[0].AmmoCount.ToString() : _weapons.m_SecondaryList[1].AmmoCount.ToString();
+    private void ChangeAmmoText() => _secondaryAmmoCount.text = _weapons.ActualSecondary == 0 ? _weapons.SecondaryList[0].AmmoCount.ToString() : _weapons.SecondaryList[1].AmmoCount.ToString();
 
 
 }

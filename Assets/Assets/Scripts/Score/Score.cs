@@ -31,7 +31,7 @@ public class Score : MonoBehaviour
     [SerializeField]
     private int maxHostageNumber;
     [SerializeField]
-    private int currentHostageNumber;    //=> StageManager.instance.HostagesCount;
+    private int currentHostageNumber => StageManager.instance.HostagesCount;
     [SerializeField]
     private int _bonusScoreIfAllHostages;
     [SerializeField]
@@ -81,7 +81,7 @@ public class Score : MonoBehaviour
     /// <summary>
     /// Total bonus Stamina score 
     /// </summary>
-    public int EnergyScore => (_pointOnStaminaAccomoulated * Convert.ToInt32(((Laser)PlayerShooting.m_PrimaryList[0]).AmmoCount));
+    public int EnergyScore => (_pointOnStaminaAccomoulated * Convert.ToInt32(((Laser)PlayerShooting.PrimaryList[0]).AmmoCount));
     /// <summary>
     /// Total destroy enemies bonus
     /// </summary>

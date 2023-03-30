@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(ConcussionMissile))]
-public class UI : MonoBehaviour
+public class UI : Singleton<UI>
 {
     public Text Death;
     public Text GameOver;
@@ -62,7 +62,7 @@ public class UI : MonoBehaviour
         PreUpdate();
 
         int x = (int)Mathf.Round(_score.PlayerStats.Shield);
-        int y = (int)Mathf.Round(((Laser)_score.PlayerShooting.m_PrimaryList[0]).AmmoCount);
+        int y = (int)Mathf.Round(((Laser)_score.PlayerShooting.PrimaryList[0]).AmmoCount);
 
         _stamina.text = y.ToString();
         _shield.text = x.ToString();
@@ -99,8 +99,8 @@ public class UI : MonoBehaviour
             CrosshairConcussion.gameObject.SetActive(false);
         }
 
-        CrosshairHoming.texture = ((HomingMissile)_score.PlayerShooting.m_SecondaryList[1]).m_NextShot == 0 ? _rightCircle : _leftCircle;
-        CrosshairConcussion.texture = ((ConcussionMissile)_score.PlayerShooting.m_SecondaryList[0]).m_NextShot == 0 ? _rightCircle : _leftCircle;
+        CrosshairHoming.texture = ((HomingMissile)_score.PlayerShooting.SecondaryList[1]).m_NextShot == 0 ? _rightCircle : _leftCircle;
+        CrosshairConcussion.texture = ((ConcussionMissile)_score.PlayerShooting.SecondaryList[0]).m_NextShot == 0 ? _rightCircle : _leftCircle;
     }
 
 

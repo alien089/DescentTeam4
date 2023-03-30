@@ -18,32 +18,32 @@ public class PickableAmmo : MonoBehaviour
             {
                 case PickableType.LaserAmmo:
                     ((Laser)playerShooting.PrimaryList[0]).AmmoCount += Amount;
-                    UIStuff.instance.Notification.text = "Energy increased to " + ((Laser)playerShooting.PrimaryList[0]).AmmoCount;
+                    UI.instance.Notification.text = "Energy increased to " + ((Laser)playerShooting.PrimaryList[0]).AmmoCount;
                     StartCoroutine(TimerNotification());
                     break;
                 case PickableType.VulcanAmmo:
                     ((Vulcan)playerShooting.PrimaryList[1]).AmmoCount += Amount;
-                    UIStuff.instance.Notification.text = "Vulcan Ammo!";
+                    UI.instance.Notification.text = "Vulcan Ammo!";
                     StartCoroutine(TimerNotification());
                     break;
                 case PickableType.ConcussionMissileAmmo:
                     ((ConcussionMissile)playerShooting.SecondaryList[0]).AmmoCount += Amount;
-                    UIStuff.instance.Notification.text = Amount + " concussion missile!";
+                    UI.instance.Notification.text = Amount + " concussion missile!";
                     StartCoroutine(TimerNotification());
                     break;
                 case PickableType.HomingMissileAmmo:
                     ((HomingMissile)playerShooting.SecondaryList[1]).AmmoCount += Amount;
-                    UIStuff.instance.Notification.text = Amount + " homing missile!";
+                    UI.instance.Notification.text = Amount + " homing missile!";
                     StartCoroutine(TimerNotification());
                     break;
                 case PickableType.Shield:
                     other.GetComponent<PlayerStats>().Shield += Amount;
-                    UIStuff.instance.Notification.text = "Shield increased to " + other.GetComponent<PlayerStats>().Shield;
+                    UI.instance.Notification.text = "Shield increased to " + other.GetComponent<PlayerStats>().Shield;
                     StartCoroutine(TimerNotification());
                     break;
                 case PickableType.Vulcan:
                     playerShooting.VulcanEnable = true;
-                    UIStuff.instance.Notification.text = "Vulcan Gun!";
+                    UI.instance.Notification.text = "Vulcan Gun!";
                     break;
                 case PickableType.Hostage:
                     StageManager.instance.HostagesCount++;
@@ -57,6 +57,6 @@ public class PickableAmmo : MonoBehaviour
     private IEnumerator TimerNotification()
     {
         yield return new WaitForSeconds(TimerPopUp);
-        UIStuff.instance.Notification.text = "";
+        UI.instance.Notification.text = "";
     }
 }
