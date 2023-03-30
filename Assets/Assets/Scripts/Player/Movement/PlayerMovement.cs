@@ -7,8 +7,6 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour 
 {
 
-    public float _health;
-
     #region BackingFields
     [Header("Sensibility")]
     [SerializeField]

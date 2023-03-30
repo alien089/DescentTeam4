@@ -11,5 +11,6 @@ public abstract class SecondaryWeapon
     protected float m_Deelay;
     protected int m_ActualShot;
     protected int m_NextShot;
+
     public abstract bool Shoot();
 }
