@@ -9,8 +9,6 @@ public class Exit : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             SceneManager.LoadScene(+1);
-
         }
-
     }
 }
