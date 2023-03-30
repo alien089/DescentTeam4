@@ -10,6 +10,7 @@ public abstract class SecondaryWeapon
     protected Transform[] m_SpawnPoints = new Transform[2];
     protected float m_Deelay;
     protected int m_ActualShot;
-    protected int m_NextShot;
+    public int m_NextShot;
+
     public abstract bool Shoot();
 }

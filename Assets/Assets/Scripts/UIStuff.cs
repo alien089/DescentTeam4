@@ -46,24 +46,7 @@ public class UIStuff : Singleton<UIStuff>
             Ammo2.text = weaponScript.SecondaryList[1].AmmoCount.ToString();
         }
         Shield.text = stats.Shield.ToString();
-        //
-        CheckDeath();
-        CheckGameOver();
     }
 
-    private void CheckGameOver()
-    {
-        if (StageManager.instance.PlayerState == StageManager.PlayerStates.GAMEOVER)
-            GameOver.gameObject.SetActive(true);
-        else
-            GameOver.gameObject.SetActive(false);
-    }
 
-    private void CheckDeath()
-    {
-        if (StageManager.instance.PlayerState == StageManager.PlayerStates.DEAD)
-            Death.gameObject.SetActive(true);
-        else
-            Death.gameObject.SetActive(false);
-    }
 }

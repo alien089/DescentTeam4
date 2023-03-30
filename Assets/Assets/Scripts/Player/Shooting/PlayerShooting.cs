@@ -60,7 +60,8 @@ public class PlayerShooting : MonoBehaviour
     private PrimaryWeapon m_FlareWeapon;
 
     private TimerComponent m_Timer;
-    // Start is called before the first frame update
+
+
     void Start()
     {
         m_Timer = GetComponent<TimerComponent>();
