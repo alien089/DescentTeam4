@@ -226,13 +226,14 @@ MonoBehaviour:
   Death: {fileID: 645853868}
   GameOver: {fileID: 1124910694}
   Notification: {fileID: 1379342078}
-  _staminaSliderLeft: {fileID: 8807907}
-  _staminaSliderRight: {fileID: 494226918}
   _keyCardRed: {fileID: 1360462118}
   _rightCircle: {fileID: 2800000, guid: af7d15404453c4f43a8a7a6548dd9246, type: 3}
   _leftCircle: {fileID: 2800000, guid: 922eae698f3b56f44a2040f56c4865e8, type: 3}
+  _staminaSliderLeft: {fileID: 8807907}
+  _staminaSliderRight: {fileID: 494226918}
+  CrosshairConcussion: {fileID: 1697399049}
+  CrosshairHoming: {fileID: 800854979}
   _lives: {fileID: 1702713958}
-  Crosshair: {fileID: 1697399049}
   _stamina: {fileID: 949936863}
   _shield: {fileID: 430007180}
   _showScore: {fileID: 211799350}
@@ -735,7 +736,6 @@ GameObject:
   - component: {fileID: 692718950}
   - component: {fileID: 692718949}
   - component: {fileID: 692718948}
-  - component: {fileID: 692718951}
   m_Layer: 5
   m_Name: PrimaryImageAndScript
   m_TagString: Untagged
@@ -821,50 +821,6 @@ MonoBehaviour:
   _secondaryAmmoCount: {fileID: 0}
   _missile: {fileID: 0}
   _homingMissile: {fileID: 0}
---- !u!114 &692718951
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 692718946}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6421ebcf3a571114fa0bb605a78c216f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  RightWeapon: {fileID: 0}
-  LeftWeapon: {fileID: 0}
-  CentralWeapon: {fileID: 0}
-  ActualPrimary: 0
-  ActualSecondary: 0
-  FlareProjectile: {fileID: 0}
-  FlareAmmoSetupCount: 0
-  FlareAmmoCost: 0
-  FlareDeelay: 0
-  LaserProjectile: {fileID: 0}
-  LaserAmmoSetupCount: 0
-  LaserAmmoCost: 0
-  LaserDeelay: 0
-  VulcanProjectile: {fileID: 0}
-  VulcanAmmoSetupCount: 0
-  VulcanAmmoCost: 0
-  VulcanDeelay: 0
-  ConcussionProjectile: {fileID: 0}
-  ConcussionAmmoSetupCount: 0
-  ConcussionAmmoCost: 0
-  ConcussionDeelay: 0
-  HomingProjectile: {fileID: 0}
-  HomingAmmoSetupCount: 0
-  HomingAmmoCost: 0
-  HomingDeelay: 0
-  PrimaryWeapon: 323
-  SecondaryWeapon: 324
-  TertiaryWeapon: 102
-  ChooseFirstPrimary: 49
-  ChooseSecondPrimary: 50
-  ChooseFirstSecondary: 54
-  ChooseSecondSecondary: 55
 --- !u!1 &695486842
 GameObject:
   m_ObjectHideFlags: 0
@@ -877,7 +833,6 @@ GameObject:
   - component: {fileID: 695486847}
   - component: {fileID: 695486846}
   - component: {fileID: 695486845}
-  - component: {fileID: 695486844}
   m_Layer: 5
   m_Name: SecondaryImageAndScript
   m_TagString: Untagged
@@ -963,50 +918,6 @@ MonoBehaviour:
   _secondaryAmmoCount: {fileID: 987379681}
   _missile: {fileID: 2800000, guid: 2b34b81c83b5f474384477539171934e, type: 3}
   _homingMissile: {fileID: 2800000, guid: 980004a21419f194e84b004c37691532, type: 3}
---- !u!114 &695486844
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 695486842}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6421ebcf3a571114fa0bb605a78c216f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  RightWeapon: {fileID: 0}
-  LeftWeapon: {fileID: 0}
-  CentralWeapon: {fileID: 0}
-  ActualPrimary: 0
-  ActualSecondary: 0
-  FlareProjectile: {fileID: 0}
-  FlareAmmoSetupCount: 0
-  FlareAmmoCost: 0
-  FlareDeelay: 0
-  LaserProjectile: {fileID: 0}
-  LaserAmmoSetupCount: 0
-  LaserAmmoCost: 0
-  LaserDeelay: 0
-  VulcanProjectile: {fileID: 0}
-  VulcanAmmoSetupCount: 0
-  VulcanAmmoCost: 0
-  VulcanDeelay: 0
-  ConcussionProjectile: {fileID: 0}
-  ConcussionAmmoSetupCount: 0
-  ConcussionAmmoCost: 0
-  ConcussionDeelay: 0
-  HomingProjectile: {fileID: 0}
-  HomingAmmoSetupCount: 0
-  HomingAmmoCost: 0
-  HomingDeelay: 0
-  PrimaryWeapon: 323
-  SecondaryWeapon: 324
-  TertiaryWeapon: 102
-  ChooseFirstPrimary: 49
-  ChooseSecondPrimary: 50
-  ChooseFirstSecondary: 54
-  ChooseSecondSecondary: 55
 --- !u!1 &800854977
 GameObject:
   m_ObjectHideFlags: 0
@@ -2618,7 +2529,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1aea1c59287b3334ca34f6a1966a3812, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 0
   m_sentibilityVertical: 3
   m_sensibilityHorizontal: 3
   m_forwardSpeed: 50
@@ -2650,7 +2560,7 @@ MonoBehaviour:
   FlareAmmoSetupCount: 100
   FlareAmmoCost: 0.2
   FlareDeelay: 0.5
-  LaserProjectile: {fileID: 5117200529552386246, guid: d32a0c237f8034546b27e481e1e29c32, type: 3}
+  LaserProjectile: {fileID: 7883610518247968819, guid: 8c1b95184714f9540a387ce799893bf4, type: 3}
   LaserAmmoSetupCount: 100
   LaserAmmoCost: 0.2
   LaserDeelay: 0.4
@@ -2673,6 +2583,7 @@ MonoBehaviour:
   ChooseSecondPrimary: 50
   ChooseFirstSecondary: 54
   ChooseSecondSecondary: 55
+  VulcanEnable: 0
 --- !u!114 &7816036183268303874
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2762,7 +2673,6 @@ MonoBehaviour:
   _scoreOnDestroyEnemyReactor: 5000
   _scoreOnCOllectingHostage: 1000
   maxHostageNumber: 0
-  currentHostageNumber: 0
   _bonusScoreIfAllHostages: 0
   _noBonusHostages: 0
   _skillBonus: 0
@@ -2863,6 +2773,7 @@ GameObject:
   - component: {fileID: 8308445585604026037}
   - component: {fileID: 8308445585604026038}
   - component: {fileID: 8308445585604026039}
+  - component: {fileID: 1573696798}
   m_Layer: 11
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2936,6 +2847,39 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8308445585604026032}
   m_Enabled: 1
+--- !u!114 &1573696798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8308445585604026032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
 --- !u!1 &8703980782021455545
 GameObject:
   m_ObjectHideFlags: 0
