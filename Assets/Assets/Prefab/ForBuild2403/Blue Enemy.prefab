@@ -129,7 +129,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10650, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 2a938108a085ac64fb432de250c81e4d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -220,10 +220,6 @@ MonoBehaviour:
   - {fileID: 6087674467433515670}
   <EnemyProjectile>k__BackingField: {fileID: 7285303404531758411, guid: 772d1ea5fa25d524bbdc923ba040c7bd, type: 3}
   <EnemyDeelay>k__BackingField: 1
-  NotWorking:
-    <Description>k__BackingField: in progress
-  <BurstTime>k__BackingField: 3
-  <TimeBetweeenBursts>k__BackingField: 5
 --- !u!54 &8665600859354155487
 Rigidbody:
   m_ObjectHideFlags: 0
