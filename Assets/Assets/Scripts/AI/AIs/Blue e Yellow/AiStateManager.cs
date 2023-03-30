@@ -70,15 +70,6 @@ public class AiStateManager : EnemyController
     [field: SerializeField]
     public float EnemyDeelay { get; set; }
 
-    [Space(5)]
-    [SerializeField]
-    private HeaderSpace NotWorking = new HeaderSpace() { Description = "in progress" };
-    [field: SerializeField]
-    public float BurstTime { get; set; }
-
-    [field: SerializeField]
-    public float TimeBetweeenBursts { get; set; }
-
     #endregion
 
     #region Property not in editor

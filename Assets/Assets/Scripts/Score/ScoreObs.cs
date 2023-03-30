@@ -16,6 +16,27 @@ public class ScoreObs : MonoBehaviour
         public int SkillBonus;
         public int FullRescueBonus;
         public int TotalScore;
+
+        public int KilledBlueEnemy;
+        public int KilledYellowEnemy;
+        public int KilledGreenEnemey;
+        public int KilledReactor;
+
+        public int BluePoint;
+        public int YellowPoint;
+        public int GreenPoint;
+        public int ReactorPoint;
+
+        public int EnemyPoint;
+
+
+    }
+    private void Start()
+    {
+        MyObs.KilledBlueEnemy = 0;
+        MyObs.KilledGreenEnemey = 0;
+        MyObs.KilledYellowEnemy = 0;
+        MyObs.KilledReactor = 0;
     }
 
     public Obs MyObs;

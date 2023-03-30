@@ -60,7 +60,7 @@ public class UI : MonoBehaviour
         if (_pickUp.KeyCard1)
             _keyCardRed.color = new Color(_keyCardRed.color.r, _keyCardRed.color.g, _keyCardRed.color.b, 1);
 
-        _showScore.text = "Score: " + _score.TotalScore.ToString();
+        _showScore.text = "Score: " + _score.ScoreToShow.ToString();
 
 
         bool shootThis = false;
