@@ -52,7 +52,7 @@ public class UI : Singleton<UI>
     [SerializeField]
     private int[] _healths;
 
-    private void Start() => _score = transform.parent.parent.GetComponent<Score>();
+    private void Awake() => _score = transform.parent.parent.GetComponent<Score>();
 
 
 
@@ -78,7 +78,7 @@ public class UI : Singleton<UI>
         bool shootThis = false;
         CrosshairConcussion.texture = shootThis == true ? _leftCircle : _rightCircle;
 
-        _lives.text = "Life: " + StageManager.instance.m_PlayerLives.ToString();
+        _lives.text = "Lives: " + StageManager.instance.m_PlayerLives.ToString();
 
         for (int i = 0; i < _healths.Length; i++)
         {

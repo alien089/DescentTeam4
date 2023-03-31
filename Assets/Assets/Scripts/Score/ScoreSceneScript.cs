@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ScoreSceneScript : MonoBehaviour
@@ -25,11 +26,19 @@ public class ScoreSceneScript : MonoBehaviour
 
     private void Start()
     {
-        _shieldText.text = ScoreSaver.Instance.MyObs.ShieldBonus.ToString();
-        _staminaText.text = ScoreSaver.Instance.MyObs.EnergyBonus.ToString();
-        _hostageText.text = ScoreSaver.Instance.MyObs.HostageBonus.ToString();
-        _skillText.text = ScoreSaver.Instance.MyObs.SkillBonus.ToString();
-        _rescueText.text = ScoreSaver.Instance.MyObs.FullRescueBonus.ToString();
-        _scoreText.text = ScoreSaver.Instance.MyObs.TotalScore.ToString();
+        _shieldText.text = "Shield Bonus: " + ScoreSaver.Instance.MyObs.ShieldBonus.ToString();
+        _staminaText.text = "Energy Bonus: " + ScoreSaver.Instance.MyObs.EnergyBonus.ToString();
+        _hostageText.text = "Hostage Bonus: " + ScoreSaver.Instance.MyObs.HostageBonus.ToString();
+        _skillText.text = "Skill Bonus: " + ScoreSaver.Instance.MyObs.SkillBonus.ToString();
+        _rescueText.text = "Full Rescue Bonus: " + ScoreSaver.Instance.MyObs.FullRescueBonus.ToString();
+        _scoreText.text = "Total Score: " + ScoreSaver.Instance.MyObs.TotalScore.ToString();
+    }
+
+    private void Update()
+    {
+        if (Input.anyKey)
+        {
+            SceneManager.LoadScene(0);
+        }
     }
 }

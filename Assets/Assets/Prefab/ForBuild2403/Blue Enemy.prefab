@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4596734695480802437}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.025, y: 0.731, z: 0.263}
+  m_LocalPosition: {x: -0.025, y: 0.321, z: 0.893}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8665600859354155473}
@@ -54,7 +54,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4886443035689912101}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.024, y: -0.756, z: 0.41}
+  m_LocalPosition: {x: -0.024, y: -0.307, z: 0.889}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8665600859354155473}
@@ -129,7 +129,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10650, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 2a938108a085ac64fb432de250c81e4d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -177,7 +177,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_angle: 360
-  m_range: 200
+  m_range: 25.3
   m_target:
     serializedVersion: 2
     m_Bits: 2048
@@ -220,10 +220,6 @@ MonoBehaviour:
   - {fileID: 6087674467433515670}
   <EnemyProjectile>k__BackingField: {fileID: 7285303404531758411, guid: 772d1ea5fa25d524bbdc923ba040c7bd, type: 3}
   <EnemyDeelay>k__BackingField: 1
-  NotWorking:
-    <Description>k__BackingField: in progress
-  <BurstTime>k__BackingField: 3
-  <TimeBetweeenBursts>k__BackingField: 5
 --- !u!54 &8665600859354155487
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -265,8 +261,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4261a710a6a0d84ab5738ba7b91072e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _probabilityOfDrop: 0
-  _drop: {fileID: 0}
+  _probabilityOfDrop: 25
+  _drop: {fileID: 5263184528319698375, guid: 089ef48bf25502b41b1acf500677bc59, type: 3}
 --- !u!114 &2233709477355111804
 MonoBehaviour:
   m_ObjectHideFlags: 0
