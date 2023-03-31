@@ -18,7 +18,7 @@ public class PickableAmmo : MonoBehaviour
             {
                 case PickableType.LaserAmmo:
                     ((Laser)playerShooting.PrimaryList[0]).AmmoCount += Amount;
-                    UI.instance.Notification.text = "Energy increased to " + ((Laser)playerShooting.PrimaryList[0]).AmmoCount;
+                    UI.instance.Notification.text = "Energy increased to " + (int)(((Laser)playerShooting.PrimaryList[0]).AmmoCount);
                     StartCoroutine(TimerNotification());
                     break;
                 case PickableType.VulcanAmmo:

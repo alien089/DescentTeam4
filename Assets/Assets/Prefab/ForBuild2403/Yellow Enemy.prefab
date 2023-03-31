@@ -103,7 +103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_angle: 360
-  m_range: 200
+  m_range: 25
   m_target:
     serializedVersion: 2
     m_Bits: 2048
@@ -187,8 +187,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4261a710a6a0d84ab5738ba7b91072e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _probabilityOfDrop: 0
-  _drop: {fileID: 0}
+  _probabilityOfDrop: 25
+  _drop: {fileID: 6745648967086475867, guid: 80fb098c21cde8842b715692852283db, type: 3}
 --- !u!114 &9191084729313186003
 MonoBehaviour:
   m_ObjectHideFlags: 0

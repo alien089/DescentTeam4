@@ -63,8 +63,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f67832157b5002746ba1364267b964b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 20
-  Speed: 10
+  Damage: 25
+  Speed: 40
   IsPlayer: 1
 --- !u!114 &2453379449854115136
 MonoBehaviour:
@@ -197,7 +197,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4628538112275749244, guid: fdeff6144c7a52d4c9008a9a04b4ee97, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4628538112275749244, guid: fdeff6144c7a52d4c9008a9a04b4ee97, type: 3}
       propertyPath: m_LocalRotation.x
@@ -205,7 +205,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4628538112275749244, guid: fdeff6144c7a52d4c9008a9a04b4ee97, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4628538112275749244, guid: fdeff6144c7a52d4c9008a9a04b4ee97, type: 3}
       propertyPath: m_LocalRotation.z
@@ -217,7 +217,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4628538112275749244, guid: fdeff6144c7a52d4c9008a9a04b4ee97, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 180
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4628538112275749244, guid: fdeff6144c7a52d4c9008a9a04b4ee97, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z

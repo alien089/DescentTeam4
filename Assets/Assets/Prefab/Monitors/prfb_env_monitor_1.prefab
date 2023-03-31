@@ -387,6 +387,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7390710829585215460}
+  - component: {fileID: 7043788550630134924}
+  - component: {fileID: 84170139460784849}
   m_Layer: 0
   m_Name: prfb_env_monitor_1
   m_TagString: Untagged
@@ -403,10 +405,36 @@ Transform:
   m_GameObject: {fileID: 6168659231711380624}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.45, y: 0.45, z: 0.45}
   m_Children:
   - {fileID: 1307268951626337467}
   - {fileID: 3435647836023172876}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &7043788550630134924
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6168659231711380624}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5.666148, y: 3.3580594, z: 1}
+  m_Center: {x: 0.029882908, y: -0.03640598, z: 0}
+--- !u!114 &84170139460784849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6168659231711380624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f63280b1e28cc347a2c3459a25d7dbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_newObject: {fileID: 3732267974508401522, guid: 4e907e4bd6a99034eaeb3bf9741cbc4f, type: 3}
