@@ -68,7 +68,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10650, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 2a938108a085ac64fb432de250c81e4d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -103,7 +103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_angle: 360
-  m_range: 200
+  m_range: 25
   m_target:
     serializedVersion: 2
     m_Bits: 2048
@@ -144,12 +144,8 @@ MonoBehaviour:
   <SpawnPoints>k__BackingField:
   - {fileID: 5132036037984738807}
   - {fileID: 1087326313821420166}
-  <EnemyProjectile>k__BackingField: {fileID: 7970503187810033031, guid: d5a859757aa5fb34aa0bb6f795c6abb3, type: 3}
+  <EnemyProjectile>k__BackingField: {fileID: 2168060453619676191, guid: 21f63eb9126a88c448c7e7992065e84d, type: 3}
   <EnemyDeelay>k__BackingField: 1
-  NotWorking:
-    <Description>k__BackingField: in progress
-  <BurstTime>k__BackingField: 3
-  <TimeBetweeenBursts>k__BackingField: 5
 --- !u!54 &2535333319412447695
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -191,8 +187,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4261a710a6a0d84ab5738ba7b91072e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _probabilityOfDrop: 0
-  _drop: {fileID: 0}
+  _probabilityOfDrop: 25
+  _drop: {fileID: 6745648967086475867, guid: 80fb098c21cde8842b715692852283db, type: 3}
 --- !u!114 &9191084729313186003
 MonoBehaviour:
   m_ObjectHideFlags: 0

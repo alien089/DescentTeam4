@@ -15,6 +15,8 @@ public class ReactorController : EnemyController
     public int BossAmmoCost;
     public float BossDeelay;
 
+    public Animator ExitDoor;
+
     private PrimaryWeapon[] m_WeaponsList;
     private TimerComponent m_TimerComponent;
     private GameObject m_Player;
@@ -102,6 +104,7 @@ public class ReactorController : EnemyController
     private void OnDestroy()
     {
         StageManager.instance.BossDead = true;
+        ExitDoor.SetBool("exit", true);
     }
     private void OnTriggerEnter(Collider other)
     {

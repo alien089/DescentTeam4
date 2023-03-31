@@ -7,21 +7,16 @@ public class StaminaRecovery : MonoBehaviour
     [SerializeField]
     private float m_addEveryUpdate;
     [SerializeField]
-    private float m_maxRecovery;
-
-    [Header("Dont Change it , its just to see")]
-    [SerializeField]
-    private float m_current;
+    private float m_maxRecovery = 100;
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && other.gameObject.TryGetComponent<PlayerShooting>(out PlayerShooting Player))
         {
-            if (m_current < 100)
+            if (((Laser)Player.PrimaryList[0]).AmmoCount < m_maxRecovery)
             {
-                m_current += m_addEveryUpdate;
+                ((Laser)Player.PrimaryList[0]).AmmoCount += m_addEveryUpdate;
             }
-
         }
     }
 }

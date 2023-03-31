@@ -21,6 +21,6 @@ public class MovingPulsatingRed : MonoBehaviour
     {
         curX += Time.deltaTime * speedX;
         curY += Time.deltaTime * speedY;
-        GetComponent<Renderer>().material.SetTextureOffset("_MainTex", new Vector2(curX, curY));
+        GetComponent<Renderer>().material.SetTextureOffset("_BaseMap", new Vector2(curX, curY));
     }
 }
