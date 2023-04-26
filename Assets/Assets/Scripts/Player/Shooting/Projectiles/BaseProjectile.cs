@@ -25,7 +25,7 @@ public class BaseProjectile : GenericProjectile, IBullet
 
     protected override void Explode()
     {
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 
     private void OnCollisionEnter(Collision collision)

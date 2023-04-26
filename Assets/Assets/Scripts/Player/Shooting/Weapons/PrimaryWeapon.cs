@@ -11,5 +11,5 @@ public abstract class PrimaryWeapon
     protected Transform[] m_SpawnBullets = new Transform[2];
     protected Transform m_SpawnBullet;
     protected TimerComponent m_Timer;
-    public abstract bool Shoot();
+    public abstract bool Shoot(Pooler pooler);
 }

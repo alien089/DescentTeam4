@@ -12,13 +12,14 @@ GameObject:
   - component: {fileID: 985258916787231074}
   - component: {fileID: 2075148447014777656}
   - component: {fileID: 2453379449854115136}
+  - component: {fileID: 205195948926075751}
   m_Layer: 6
   m_Name: prfb_plyr_laser_projectile
   m_TagString: baseProjectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5917154495596441118
 Transform:
   m_ObjectHideFlags: 0
@@ -79,6 +80,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_effect: {fileID: 6041120106514283667, guid: f6d69999131a0e74db9023d50fde17cc, type: 3}
+--- !u!114 &205195948926075751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7883610518247968819}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6e92d5950f87ef4890370b9bc23648e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pooler: {fileID: 0}
 --- !u!1 &8691844289024123631
 GameObject:
   m_ObjectHideFlags: 0

@@ -17,7 +17,7 @@ public class GreenDodgeState : GreenAiBaseState
         //ai.Body.AddForce(Random.onUnitSphere * ai.Speed * 10);
         #endregion
         
-        ai.EnemyWeapon.Shoot();
+        ai.EnemyWeapon.Shoot(ai.pooler);
 
     }
     public override void OnTriggerEnter(GreenAiManager ai, Collider other)

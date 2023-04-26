@@ -13,6 +13,6 @@ public class AiChaseState : AiBaseState
     {
         ai.Body.AddForce((ai.Player.transform.position - ai.transform.position).normalized * ai.Speed);
         ai.transform.LookAt(ai.Player.transform);
-        ai.EnemyWeapon.Shoot();
+        ai.EnemyWeapon.Shoot(ai.pooler);
     }
 }

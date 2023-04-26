@@ -45,7 +45,7 @@ public class GreenAiManager : EnemyController
 
 
     #endregion
-
+    public Pooler pooler;
 
     public FOV FOV { get; set; }
     public Vector3 InitialPos { get; set; }

@@ -8,6 +8,7 @@ using UnityEngine;
 public class ReactorController : EnemyController
 {
     public Transform[] SpawnList;
+    public Pooler pooler;
 
     [Header("Weapon Data")]
     public GameObject BossProjectile;
@@ -84,7 +85,7 @@ public class ReactorController : EnemyController
         if (CheckInView())
         {
             PrimaryWeapon weapon = m_WeaponsList[m_ActualChoosedWeapon];
-            weapon.Shoot();
+            weapon.Shoot(pooler);
         }
     }
 

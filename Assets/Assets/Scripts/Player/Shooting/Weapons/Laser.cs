@@ -20,7 +20,7 @@ public class Laser : PrimaryWeapon
         m_Timer = timer;
     }
 
-    public override bool Shoot()
+    public override bool Shoot(Pooler pooler)
     {
         bool shooted = false;
         if (AmmoCount - m_AmmoCost >= 0f)
@@ -30,8 +30,10 @@ public class Laser : PrimaryWeapon
                 GameObject left;
                 GameObject right;
 
-                left = UnityEngine.Object.Instantiate(m_LaserProjectile, m_SpawnBullets[0].position, m_SpawnBullets[0].rotation);
-                right = UnityEngine.Object.Instantiate(m_LaserProjectile, m_SpawnBullets[1].position, m_SpawnBullets[1].rotation);
+                pooler.GetObject(m_SpawnBullets[0]);
+                pooler.GetObject(m_SpawnBullets[1]);
+                //left = UnityEngine.Object.Instantiate(m_LaserProjectile, m_SpawnBullets[0].position, m_SpawnBullets[0].rotation);
+                //right = UnityEngine.Object.Instantiate(m_LaserProjectile, m_SpawnBullets[1].position, m_SpawnBullets[1].rotation);
 
                 m_Timer.Coroutine(m_Deelay);
 

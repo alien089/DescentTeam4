@@ -19,6 +19,6 @@ public class AiAttackState : AiBaseState
         Vector3 nextPos = (ai.transform.position - ai.Player.transform.position).normalized * ai.Radius + ai.Player.transform.position;
         ai.transform.position = Vector3.MoveTowards(ai.transform.position, nextPos, Time.deltaTime * ai.RadiusSpeed);
         ai.transform.LookAt(ai.Player.transform);
-        ai.EnemyWeapon.Shoot();
+        ai.EnemyWeapon.Shoot(ai.pooler);
     }
 }

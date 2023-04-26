@@ -16,7 +16,7 @@ public class Vulcan : PrimaryWeapon
         m_Timer = timer;
     }
 
-    public override bool Shoot()
+    public override bool Shoot(Pooler pooler)
     {
         bool shooted = false;  
         if (AmmoCount - m_AmmoCost >= 0f)

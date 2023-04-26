@@ -7,6 +7,7 @@ using UnityEngine;
 [RequireComponent(typeof(TimerComponent))]
 public class AiStateManager : EnemyController
 {
+    public Pooler pooler;
     [Serializable]
     private struct HeaderSpace
     {

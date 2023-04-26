@@ -9,6 +9,7 @@ public class PlayerShooting : MonoBehaviour
     public Transform RightWeapon;
     public Transform LeftWeapon;
     public Transform CentralWeapon;
+    public Pooler pooler;
 
     public int ActualPrimary;
     public int ActualSecondary;
@@ -90,7 +91,7 @@ public class PlayerShooting : MonoBehaviour
         if (Input.GetKey(PrimaryWeapon))
         {
             PrimaryWeapon weapon = PrimaryList[ActualPrimary];
-            weapon.Shoot();
+            weapon.Shoot(pooler);
         }
     }
 
@@ -108,7 +109,7 @@ public class PlayerShooting : MonoBehaviour
         if (Input.GetKeyDown(TertiaryWeapon))
         {
             PrimaryWeapon weapon = m_FlareWeapon;
-            weapon.Shoot();
+            weapon.Shoot(pooler);
         }
     }
 
